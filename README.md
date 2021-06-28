@@ -12,7 +12,7 @@
 | add      | 기능, 문서 외의 코드 추가          |
 | correct  | 문법 오류, 타입 변경, 오타 등 수정 |
 
-## develper
+## developer
 
 - 김성민
 - 안소은
