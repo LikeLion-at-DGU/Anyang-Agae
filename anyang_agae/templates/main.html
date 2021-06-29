@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <body>
   <main class="main" id="top">
     <section id="home">
@@ -12,9 +12,10 @@
           <div class="col-md-7 col-lg-6 py-6 text-md-start text-center">
             <h6 class="fs-0 text-uppercase fw-bold text-600">동물병원리뷰</h6>
             <h1 class="fw-bold fs-4 fs-lg-6 fs-xxl-7 text-primary"> 아프냥<br />나도아프개</h1>
-            <p class="mb-5 fs-1 fw-medium">내 새끼의 안전한 치료를 위해 <br class="d-none d-xl-block" />집사들이 직접쓰는 리뷰</p><a
-              class="btn hover-top btn-collab" href="#!">리뷰검색</a><a
-              class="btn hover-top btn-collab-outline text-gradient ms-2" href="#!"> 리뷰쓰기</a>
+            <p class="mb-5 fs-1 fw-medium">내 새끼의 안전한 치료를 위해 <br class="d-none d-xl-block" />집사들이 직접쓰는 리뷰</p>
+            <a class="btn hover-top btn-collab" href="#!">리뷰검색</a>
+            <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="{% url 'main:write' %}"> 리뷰쓰기</a>
+            <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="{% url 'main:ReviewList' %}">내 리뷰 히스토리</a>
           </div>
         </div>
       </div>
@@ -31,7 +32,7 @@
             <h6 class="fs-0 text-uppercase fw-bold text-primary">리뷰쓰기</h6>
             <h6 class="fw-bold fs-3 fs-lg-5 lh-sm">동물병원의 리얼한 리뷰를 써보세요</h6>
             <p class="my-4 fs-1 pe-xl-8">병원비,친절도 등 다양한 요소의 리뷰를 집사들과 공유할 수 있어요. </p>
-            <a class="btn hover-top btn-collab" href="#" role="button">리뷰쓰러가기</a>
+            <a class="btn hover-top btn-collab" href="{% url 'main:write' %}" role="button">리뷰쓰러가기</a>
           </div>
         </div>
         <div class="row flex-center">

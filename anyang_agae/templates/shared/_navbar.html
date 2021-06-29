@@ -4,7 +4,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block"
     data-navbar-on-scroll="data-navbar-on-scroll">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="{% url 'main' %}">
         <img class="me-3 d-inline-block" src="{% static 'img/gallery/logo_ver2.png' %}" alt="" />
       </a>
       <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -18,7 +18,7 @@
             <a class="nav-link fw-bold active" aria-current="page" href="#home">리뷰 검색하기</a>
           </li>
           <li class="nav-item px-2" data-anchor="data-anchor">
-            <a class="nav-link fw-bold" href="#service">리뷰보기</a>
+            <a class="nav-link fw-bold" href="{% url 'main:ReviewList' %}">리뷰보기</a>
           </li>
         </ul>
         <form class="ps-lg-5">

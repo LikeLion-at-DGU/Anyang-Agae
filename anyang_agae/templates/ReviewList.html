@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    
+    <table style="margin-left: 20%; margin-top: 10%; width: 60%;">
+    <td>
+        {% for blog in blogs %}
+        <div>
+            
+            <h3><img src="../static/img/gallery/foot.png" width="8%">&nbsp; {{blog.title}}</h3>
+            <h4>{{blog.summary}}<a href="{%url 'main:ReviewDetail' blog.id%}">...more</a></h4>
+            <br><hr>
+        </div>
+        {%endfor%}
+    </div>
+    </td>
+</body>
+</html>
+{% endblock %}
