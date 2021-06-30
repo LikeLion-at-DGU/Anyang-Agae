@@ -20,7 +20,7 @@ from anyang_agae import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
-    path('', include('main.urls',namespace='main')), #메인앱의 urls.py를 포함한다.
+    path('', include('reviews.urls',namespace='reviews')), #reviews앱의 urls.py를 포함한다.
     path('', views.main, name="main"), #main페이지
     path('map/', views.map, name="map"), #map페이지
 ]

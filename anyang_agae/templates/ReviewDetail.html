@@ -5,20 +5,20 @@
 <body style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),url('../static/img/gallery/vat.jpg');">
     <table style="margin-left: 20%; margin-top: 10%; width: 60%;" bgcolor=white>
         <tr>
-            <td align= center bgcolor=#ccc style="vertical-align:50%"><font color=black size="5px"><img src="../static/img/gallery/dog.png" width="10%"/> {{blog.title}}</font></td>
+            <td align= center bgcolor=#ccc style="vertical-align:50%"><font color=black size="5px"><img src="../static/img/gallery/dog.png" width="10%"/> {{review.title}}</font></td>
         </tr>
         <tr>
-            <td style="font-size: 19px;border-bottom: 3px solid grey; padding-left: 3%;">{{blog.pub_date}}</td>
+            <td style="font-size: 19px;border-bottom: 3px solid grey; padding-left: 3%;">{{review.pub_date}}</td>
         </tr>
         <tr >
-            <td style="height: 300px; vertical-align: top; padding: 5% 3%;"><font size="5px">{{blog.body}}</font></td>
+            <td style="height: 300px; vertical-align: top; padding: 5% 3%;"><font size="5px">{{review.content}}</font></td>
         </tr>
         <tr>
             <td style="padding-bottom: 5%;">
         <center>
             <!-- <button href="#">삭제</button> -->
             <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="#"> 삭제</a>
-            <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="{% url 'main:ReviewList' %}"> 목록가기</a>
+            <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="{% url 'reviews:ReviewList' %}"> 목록가기</a>
         </center>
             </td>
         </tr>
