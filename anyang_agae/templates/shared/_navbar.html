@@ -1,30 +1,17 @@
 {% load static %}
-
-<main class="main" id="top">
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block"
-    data-navbar-on-scroll="data-navbar-on-scroll">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'main' %}">
-        <img class="me-3 d-inline-block" src="{% static 'img/gallery/logo_ver2.png' %}" alt="" />
-      </a>
-      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto pt-2 pt-lg-0 font-base">
-          <li class="nav-item px-2" data-anchor="data-anchor">
-            <a class="nav-link fw-bold active" aria-current="page" href="#home">리뷰 검색하기</a>
-          </li>
-          <li class="nav-item px-2" data-anchor="data-anchor">
-            <a class="nav-link fw-bold" href="{% url 'reviews:ReviewList' %}">리뷰보기</a>
-          </li>
-        </ul>
-        <form class="ps-lg-5">
-          <a class="btn hover-top btn-collab" href="#">로그인</a>
-        </form>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'main' %}">
+      <img class="me-3 d-inline-block" src="{% static 'img/gallery/logo_ver2.png' %}" alt="" />
+    </a>
+    <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto pt-2 pt-lg-0 font-base">
+        <a class="nav-link fw-bold active" aria-current="page" href="#home">리뷰 검색하기</a>
+        <a class="nav-link fw-bold" href="{% url 'reviews:ReviewList' %}">리뷰보기</a>
+      </ul>
+      <form class="ps-lg-5">
+        <a class="btn hover-top btn-collab" href="#">로그인</a>
+      </form>
     </div>
-  </nav>
-</main>
+  </div>
+</nav>

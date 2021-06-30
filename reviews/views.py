@@ -3,11 +3,11 @@ from .models import Review
 from django.utils import timezone
 
 def write(request):
-    return render(request, 'write.html')
+    return render(request, 'reviews/write.html')
 
 def ReviewList(request):
     reviews = Review.objects.all()
-    return render(request, 'ReviewList.html',{'reviews':reviews})
+    return render(request, 'reviews/ReviewList.html',{'reviews':reviews})
 
 def create(request):
     new_reivew = Review()
@@ -19,4 +19,4 @@ def create(request):
 
 def ReviewDetail(request, id):
     review = get_object_or_404(Review, pk =id)
-    return render(request, 'ReviewDetail.html', {'review': review})
+    return render(request, 'reviews/ReviewDetail.html', {'review': review})
