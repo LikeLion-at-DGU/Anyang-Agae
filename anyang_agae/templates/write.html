@@ -26,6 +26,7 @@
         }
  
 </style>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vb350f48ym&submodules=geocoder"></script>
 <body style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),url('../static/img/gallery/vat.jpg');">
         <br><br><br><br><br>
         <form action="{%url 'reviews:create'%}" method = "post">
@@ -45,12 +46,17 @@
                         <td>제목</td>
                         <td><input type = "text" name ="title" size=60></td>
                         </tr>
- 
+
+                        <tr>
+                        <td>지도</td>
+                        <td><div id="map" style="width:100%;height:200px;"></div></td>
+                        </tr>
+
                         <tr>
                         <td>내용</td>
                         <td><textarea type= "text" name = "content" cols=85 rows=15></textarea></td>
                         </tr>
- 
+
                 </table>
  
                         <center>
@@ -63,6 +69,7 @@
                 </tr>
         </table>
         </form>
+<script type="text/javascript" src="{% static 'js/navermap.js'%}"></script>
 </body>
 </html>
 {% endblock %}
