@@ -94,7 +94,7 @@ function searchAddressToCoordinate(address) {
     }
 
     infoWindow.setContent([
-      '<div style="padding:10px;min-width:200px;line-height:150%;">',
+      '<div style="padding:10px;min-width:150px;line-height:150%;">',
       '<h4 style="margin-top:5px;">검색 주소 : '+ address +'</h4><br />',
       htmlAddresses.join('<br />'),
       '</div>'
@@ -105,6 +105,9 @@ function searchAddressToCoordinate(address) {
   });
 }
 
+var address = document.querySelector("#hospital");
+var search_submit = document.querySelector("#searchsubmit");
+
 function initGeocoder() {
   if (!map.isStyleMapReady) {
     return;
@@ -114,18 +117,18 @@ function initGeocoder() {
     searchCoordinateToAddress(e.coord);
   });
 
-  $('#address').on('keydown', function(e) {
+  address.on('keydown', function(e) {
     var keyCode = e.which;
 
     if (keyCode === 13) { // Enter Key
-      searchAddressToCoordinate($('#address').val());
+      searchAddressToCoordinate(address.val());
     }
   });
 
-  $('#submit').on('click', function(e) {
+  search_submit.on('click', function(e) {
     e.preventDefault();
 
-    searchAddressToCoordinate($('#address').val());
+    searchAddressToCoordinate(address.val());
   });
 
   searchAddressToCoordinate('정자동 178-1');

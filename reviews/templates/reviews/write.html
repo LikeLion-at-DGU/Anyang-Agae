@@ -29,9 +29,13 @@
                 <td><input type="text" name="title" size=60></td>
               </tr>
               <tr>
-                <td>지도</td>
+                <td>병원</td>
                 <td>
-                  <div id="map" style="width:100%;height:200px;"></div>
+                  <div class="search">
+                    <input type="text" id="hospital" name="hospital" size=30 />
+                    <a class="btn btn-default" id="searchsubmit">검색</a>
+                  </div>
+                  <div id="map" style="width:100%;height:330px;"></div>
                 </td>
               </tr>
 
@@ -53,6 +57,6 @@
       </table>
     </form>
   </main>
-  <script type="text/javascript" src="{% static 'js/navermap.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/component/navermap.js'%}"></script>
 </body>
 {% endblock %}
