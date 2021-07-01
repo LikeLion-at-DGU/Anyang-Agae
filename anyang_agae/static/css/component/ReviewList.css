@@ -1,0 +1,19 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.search-input {
+  width: 30%;
+}
+
+.review-table {
+  vertical-align: middle;
+}
+
+.foot {
+  width: 10%;
+  height: auto;
+  margin-right: 5%;
+}
