@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  margin: 2em;
+}
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.search-input {
+  width: 40%;
+}

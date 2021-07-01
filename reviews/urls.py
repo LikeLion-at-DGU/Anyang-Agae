@@ -5,6 +5,7 @@ app_name="reviews"
 urlpatterns = [
     path('write/', write, name="write"), #게시글 작성페이지
     path('ReviewList/',ReviewList, name="ReviewList"), #게시글 목룍 페이지   
+    path('SearchReview/',SearchReview, name="SearchReview"), #게시글 목룍 페이지   
     path('<str:id>',ReviewDetail, name="ReviewDetail"), #게시글 자세히보는 페이지
     path('create/',create, name="create"), #게시글 작성함수
     # path('delete/',delete, name="delete"), #게시글 삭제함수

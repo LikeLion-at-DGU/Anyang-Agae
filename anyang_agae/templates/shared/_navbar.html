@@ -10,7 +10,7 @@
       aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto pt-2 pt-lg-0 font-base">
-        <a class="nav-link fw-bold active" aria-current="page" href="#home">리뷰 검색하기</a>
+        <a class="nav-link fw-bold active" aria-current="page" href="{% url 'reviews:SearchReview' %}">리뷰 검색하기</a>
         <a class="nav-link fw-bold" href="{% url 'reviews:ReviewList' %}">리뷰보기</a>
       </ul>
       <form class="">

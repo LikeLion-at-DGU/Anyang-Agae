@@ -6,9 +6,19 @@ from django.utils import timezone
 def write(request):
     return render(request, 'reviews/write.html')
 
-def ReviewList(request):
+def SearchReview(request):
     kw = request.GET.get('kw', '')  # 검색어
     reviews = Review.objects.all()
+    # 검색
+    if kw:
+        reviews = reviews.filter(
+            Q(title__icontains=kw) # 제목검색
+        ).distinct()
+    return render(request, 'reviews/SearchReview.html',{'reviews':reviews, 'kw' : kw})
+
+def ReviewList(request):
+    reviews = Review.objects.all()
+    kw = request.GET.get('kw', '')  # 검색어
     # 검색
     if kw:
         reviews = reviews.filter(
