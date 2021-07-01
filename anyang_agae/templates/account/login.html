@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #logout {
+        border: 1px solid #fe9a52;
+    }
+</style>
+
+<center>
+    <main class="main" id="top">
+        <section id="home">
+            <hr>
+            <p><img src="{% static 'img/gallery/dog_1.png' %}" width="20%"></p>
+            <form method="POST" action="{% url 'account_login' %}" id="account">
+                <h2>로그인</h2><br>
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn hover-top btn-collab-outline text-gradient ms-2" id="logout" type="submit"
+                    value="로그인">
+            </form>
+
+        </section>
+    </main>
+</center>
+{% endblock %}
