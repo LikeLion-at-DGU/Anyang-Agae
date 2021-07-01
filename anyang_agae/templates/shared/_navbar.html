@@ -13,9 +13,17 @@
         <a class="nav-link fw-bold active" aria-current="page" href="{% url 'reviews:SearchReview' %}">리뷰 검색하기</a>
         <a class="nav-link fw-bold" href="{% url 'reviews:ReviewList' %}">리뷰보기</a>
       </ul>
+      {%if user.is_authenticated%}
       <form class="">
-        <a class="btn hover-top btn-collab" href="#">로그인</a>
+        <a class="btn hover-top btn-collab" href="{% url 'users:mypage' %}">마이페이지</a>
+        <a class="btn hover-top btn-collab" href="{% url 'account_logout' %}">로그아웃</a>
       </form>
+      {% else %}
+      <form class="">
+        <a class="btn hover-top btn-collab" href="{% url 'account_login' %}">로그인</a>
+        <a class="btn hover-top btn-collab" href="{% url 'account_signup' %}">회원가입</a>
+      </form>
+      {% endif %}
     </div>
   </div>
 </nav>
