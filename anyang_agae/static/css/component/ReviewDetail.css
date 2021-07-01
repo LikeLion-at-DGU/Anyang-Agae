@@ -1,0 +1,45 @@
+body {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("../../img/gallery/vat.jpg");
+}
+
+.table-content {
+  background-color: white;
+  width: 100%;
+}
+.review-title-tr {
+  background-color: var(--light_gray);
+}
+
+.review-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-date-tr {
+  border-bottom: 3px solid grey;
+}
+
+.review-date {
+  font-size: 20px;
+  padding-left: 3%;
+}
+
+.review-content-tr {
+  height: 300px;
+  vertical-align: top;
+  padding: 5% 3%;
+}
+.review-content {
+  font-size: 30px;
+  padding-left: 3%;
+}
+
+.review-btn {
+  text-align: center;
+}

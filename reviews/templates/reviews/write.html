@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/component/write.css' %}" />
+<script type="text/javascript"
+  src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vb350f48ym&submodules=geocoder"></script>
+
+<body
+  style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),url('../static/img/gallery/vat.jpg');">
+  <br><br><br><br><br>
+  <main class="main" id="top">
+    <form action="{%url 'reviews:create'%}" method="post">
+      {% csrf_token %}
+      <table style="padding-top:50px" align=center width=700 border=0 cellpadding=2>
+        <tr>
+          <td bgcolor=white style="text-align: center;"> <img src="{% static 'img/gallery/animalF.png' %}" /></td>
+        </tr>
+        <tr>
+          <td align=center bgcolor=#ccc style="vertical-align:50%">
+            <font color=black size="5px"><img src="{% static 'img/gallery/logo_ver2.png' %}" width="20%"> 후기작성</font>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor=white>
+            <table class="table2">
+              <tr>
+                <td>제목</td>
+                <td><input type="text" name="title" size=60></td>
+              </tr>
+              <tr>
+                <td>지도</td>
+                <td>
+                  <div id="map" style="width:100%;height:200px;"></div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>내용</td>
+                <td><textarea type="text" name="content" cols=85 rows=15></textarea></td>
+              </tr>
+
+            </table>
+
+            <center>
+              <button type="submit" class="btn hover-top btn-collab-outline text-gradient ms-2">작성완료</button>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor=white style="text-align: center;"> <img src="{% static 'img/gallery/animalB.png' %}" /></td>
+        </tr>
+      </table>
+    </form>
+  </main>
+  <script type="text/javascript" src="{% static 'js/navermap.js'%}"></script>
+</body>
+{% endblock %}

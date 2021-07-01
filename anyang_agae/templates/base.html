@@ -21,7 +21,7 @@
 
   <!-- Bootstrap CSS
   ================================================== -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" /> -->
   <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
   <link rel="stylesheet" href="{% static 'css/theme-rtl.css' %}" />
   <link rel="stylesheet" href="{% static 'css/theme-rtl.min.css' %}" />
@@ -32,10 +32,11 @@
 
   <!-- CSS
   ================================================== -->
+  <link rel="stylesheet" href="{% static 'css/variable.css' %}" />
 
 </head>
 
-<body>
+<body class="container">
   <!-- Navigation section
 ================================================== -->
   {% include 'shared/_navbar.html' %}
@@ -51,14 +52,13 @@
   <!-- Javascript 
 ================================================== -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-  <script src="{% static 'vendors/fontawesome/all.min.js' %}"></script>
-  <script src="{% static 'vendors/@popperjs/popper.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/theme.js' %}"></script>
-  <script src="{% static 'js/bootstrap-navbar.js' %}"></script>
-  <script src="{% static 'js/theme.js.map.js' %}"></script>
-  <script src="{% static 'js/theme.min.js' %}"></script>
-  <script src="{% static 'js/theme.min.js.map' %}"></script>
+  <!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+  <!-- <script src="{% static 'js/theme.js' %}"></script> -->
+  <!-- <script src="{% static 'js/bootstrap-navbar.js' %}"></script> -->
+  <!-- <script src="{% static 'js/theme.js.map' %}"></script> -->
+  <!-- <script src="{% static 'js/theme.min.js' %}"></script> -->
+  <!-- <script src="{% static 'js/theme.min.js.map' %}"></script> -->
+  <script src="{% static 'js/component/search.js' %}"></script>
 </body>
 
 </html>

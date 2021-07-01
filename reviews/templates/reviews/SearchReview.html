@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/component/SearchReview.css' %}" />
+
+<main class="main" id="top">
+  <section class="my-3">
+    <div class="py-6">
+      <h1>검색어를 입력해주세요.</h1>
+      <div class="search">
+        <input type="text" class="form-control kw search-input" onkeyup="search()" value="{{ kw|default_if_none:'' }}">
+        <div class="">
+          <button class="btn hover-top btn-collab-outline text-gradient ms-2" type="button" id="btn_search"
+            onclick="clickSearch()">찾기</button>
+        </div>
+      </div>
+    </div>
+    <form id="searchForm" method="get" action="{% url 'reviews:ReviewList' %}">
+      <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    </form>
+  </section>
+</main>
+
+{% endblock %}

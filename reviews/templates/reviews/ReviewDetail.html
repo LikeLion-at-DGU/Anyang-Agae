@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/component/ReviewDetail.css' %}" />
+
+<main class="main" id="top">
+  <section class="my-3">
+    <div class="py-6">
+      <table class="table-content">
+        <tr class="review-title-tr">
+          <td class="review-title">
+            <img src="../static/img/gallery/dog.png" />
+            <h2>{{review.title}}</h2>
+          </td>
+        </tr>
+        <tr class="review-date-tr">
+          <td class="review-date">{{review.pub_date}}</td>
+        </tr>
+        <tr class="review-content-tr">
+          <td class="review-content">{{review.content}}</td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 5%;">
+            <div class="review-btn">
+              <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="#"> 삭제</a>
+              <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="{% url 'reviews:ReviewList' %}">
+                목록가기</a>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+{% endblock %}
