@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<main class="main" id="top">
+    <section id="home">
+        <hr>
+        <div class="mypage">
+        <table style="width: 60%;" align=center>
+            <tbody>
+                <tr>
+                    <td><img src="{% static 'img/gallery/paws_1.png' %}" width="900px" style="text-align: center;"></td>
+                </tr>
+                <tr>
+                    <td><h1 style="text-align: center;"><br>- My page -</h1><br></td>
+                </tr>
+                <tr>
+                    <td><h3 style="margin-bottom:2%">Username</h3></td>
+                </tr>
+                <tr>
+                    <td><h5>{{user.username}}</h5><hr></td>
+                </tr>
+                <tr>
+                    <td><br><h3>My Review List</h3><br></td>
+                </tr>
+                <tr>
+                    <table class="table" style="width: 80%; text-align: center;" align=center>
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 25%;">제목</th>
+                                <th scope="col" style="width: 45%;">내용</th>
+                                <th scope="col">날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for review in reviews %}
+                                    <tr>
+                                        <td><a href="{% url 'reviews:ReviewDetail' review.id %}">{{review.title}}</a></td>
+                                        <td>{{review.summary}}</td>
+                                        <td>{{review.pub_date}}</td>
+                                    </tr>
+                                    {% endfor %}
+                        </tbody>
+                    </table>
+                </tr>
+            </tbody>
+        </table>
+    
+    </section>
+</div>
+</main>
+
+{% endblock %}

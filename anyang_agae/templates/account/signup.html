@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #logout {
+        border: 1px solid #fe9a52;
+    }
+</style>
+
+<center>
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <main class="main" id="top">
+        <section id="home">
+            <hr>
+
+            <form method="POST" action="{% url 'account_signup' %}" id="account">
+                <h1><img src="{% static 'img/gallery/foot.png' %}" width="4%">&nbsp;회원가입</h1><Br>
+                <h4 style="color:#fe9a52;">지금 바로 아냥아개를 시작하세요!</h4><br>
+                {% csrf_token %} {{ form.as_p }}
+                <input type="submit" class="btn hover-top btn-collab-outline text-gradient ms-2" id="logout"
+                    value="회원가입">
+            </form>
+        </section>
+    </main>
+</center>
+{% endblock %}
