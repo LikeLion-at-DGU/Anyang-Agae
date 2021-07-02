@@ -11,12 +11,11 @@
         <tr>
           <th>번호</th>
           <th>제목</th>
+          <th>작성자</th>
           <th>작성일시</th>
         </tr>
-      </thead>      
+      </thead>
       <tbody>
-        {%if user.is_authenticated%}
-
         {% for review in reviews %}
         <tr>
           <td>{{ forloop.counter }}</td>
@@ -24,22 +23,10 @@
             <img class="foot" src="{% static 'img/gallery/foot.png' %}">
             <a href="{%url 'reviews:ReviewDetail' review.id%}">[{{review.hospital}}]{{review.title}}</a>
           </td>
+          <td>{{review.writer}}</td>
           <td>{{review.pub_date}}</td>
         </tr>
         {% endfor %}
-
-        {% else %}
-        <tr>
-          <td colspan="3"><br><br>
-            <center><h3>로그인 후 열람가능</h3>
-              <form class="">
-                <a class="btn hover-top btn-collab" href="{% url 'account_login' %}">로그인</a>
-                <a class="btn hover-top btn-collab" href="{% url 'account_signup' %}">회원가입</a><br><br>
-              </form>
-            </center>
-          </td>
-        </tr>
-        {% endif %}
       </tbody>
     </table>
   </section>
