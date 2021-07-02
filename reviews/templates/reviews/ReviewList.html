@@ -21,6 +21,8 @@
           <td>
             <img class="foot" src="{% static 'img/gallery/foot.png' %}">
             {{review.title}}
+            <br><h4>점수: {{review.grade}}</h4>
+
           </td>
           <td>{{review.summary}}<a href="{%url 'reviews:ReviewDetail' review.id%}">...more</a></td>
         </tr>

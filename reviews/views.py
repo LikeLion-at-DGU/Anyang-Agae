@@ -31,6 +31,7 @@ def create(request):
     new_reivew.title = request.POST['title']
     new_reivew.pub_date = timezone.now()
     new_reivew.content = request.POST['content']
+    new_reivew.grade = request.POST['grade']
     new_reivew.writer=request.user
     new_reivew.save()
     return redirect('reviews:ReviewDetail', new_reivew.id)
