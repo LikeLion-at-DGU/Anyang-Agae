@@ -2,27 +2,24 @@
 {% load static %}
 {% block content %}
 
-<style>
-    #logout {
-        border: 1px solid #fe9a52;
-    }
-</style>
-
-<center>
-    <main class="main" id="top">
+<section class="contact_area p_120">
+  <div class="container">
+    <div class="text-center">
+      <main class="main" id="top">
         <section id="home">
-            <hr>
-            <p><img src="{% static 'img/gallery/cat_1.png' %}" width="20%"></p>
-            <form method="POST" action="{% url 'account_logout' %}" id="account">
+          <hr>
+          <p><img src="{% static 'img/gallery/cat_1.png' %}" width="20%"></p>
+          <form method="POST" action="{% url 'account_logout' %}" id="account">
 
-                <h4>현재 <strong>{{user.username}}</strong>으로 로그인 되어있습니다.</h4>
-                <h4>로그아웃 하시겠습니까</h4>
-                {% csrf_token %} {{ form.as_p }}<br>
-                <input class="btn hover-top btn-collab-outline text-gradient ms-2" id="logout" type="submit"
-                    value="로그아웃">
-            </form>
+            <h4>현재 <strong>{{user.username}}</strong>으로 로그인 되어있습니다.</h4>
+            <h4>로그아웃 하시겠습니까</h4>
+            {% csrf_token %} {{ form.as_p }}<br>
+            <input class="btn submit_btn" id="logout" type="submit" value="Logout">
+          </form>
 
         </section>
-    </main>
-</center>
+      </main>
+    </div>
+  </div>
+</section>
 {% endblock %}

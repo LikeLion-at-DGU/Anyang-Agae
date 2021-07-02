@@ -1,4 +1,12 @@
-table.table2 {
+body {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url(../../img/gallery/vat.jpg);
+}
+
+/* table.table2 {
   border-collapse: separate;
   border-spacing: 1px;
   text-align: left;
@@ -20,4 +28,13 @@ table.table2 td {
   padding: 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
+} */
+
+.write-content {
+  width: 100%;
+}
+
+table,
+.img-title {
+  width: 100%;
 }

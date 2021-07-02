@@ -4,22 +4,30 @@
 
 <link rel="stylesheet" href="{% static 'css/component/SearchReview.css' %}" />
 
-<main class="main" id="top">
-  <section class="my-3">
-    <div class="py-6">
-      <h1>검색어를 입력해주세요.</h1>
-      <div class="search">
-        <input type="text" class="form-control kw search-input" onkeyup="search()" value="{{ kw|default_if_none:'' }}">
-        <div class="">
-          <button class="btn hover-top btn-collab-outline text-gradient ms-2" type="button" id="btn_search"
-            onclick="clickSearch()">찾기</button>
+<section class="contact_area p_120">
+  <div class="container">
+    <h1>키워드를 입력해주세요.</h1>
+    <div class="blog_right_sidebar">
+      <div class="single_sidebar_widget search_widget">
+        <div class="input-group">
+          <input type="text" class="form-control kw" placeholder="Search Posts" onkeyup="search()"
+            value="{{ kw|default_if_none:'' }}">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="clickSearch()">
+              <i class="lnr lnr-magnifier"></i>
+            </button>
+          </span>
+        </div><!-- /input-group -->
+        <div class="br text-center">
+          제목, 작성자로 키워드 검색이 가능합니다.
         </div>
       </div>
     </div>
     <form id="searchForm" method="get" action="{% url 'reviews:ReviewList' %}">
       <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     </form>
-  </section>
-</main>
+  </div>
+</section>
+
 
 {% endblock %}
