@@ -56,6 +56,34 @@
         </tr>
       </table>
     </div>
+    <div id="comment-section">
+      <div class="form-floating">
+        <form class="d-flex justify-content-center" action="{% url 'reviews:create_comment' review.id %}" method="POST">
+          {%csrf_token%}
+          <textarea class="form-control" name="content" id="comment-content" placeholder="댓글 입력"></textarea>
+          <button type="submit" id="comment-submit" class="btn hover-top btn-collab">작성</button>
+        </form>
+      </div>
+      <ul id="comment-list" class="list-group list-group-flush">
+        {% for comment in comments %}
+        <li class="list-group-item">
+          {{comment.writer}}<br/>
+          {{comment.created_at}}<br/>
+          {{comment.content}}
+          <i class="bi bi-three-dots-vertical"></i>
+          <div class="dropdown float-end">
+            <button class="dropdown-toggle" id="dropdownMenu">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+              <li><button class="dropdown-item" type="button">수정</button></li>
+              <li><button class="dropdown-item" type="button">삭제</button></li>
+            </ul>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </section>
 </main>
 

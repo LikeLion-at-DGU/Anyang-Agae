@@ -47,3 +47,22 @@ body {
 .review-btn {
   text-align: center;
 }
+
+#comment-section{
+  background-color: white;
+  padding: 3%;
+}
+
+#comment-content{
+  width: 80%;
+  float: left;
+}
+
+#comment-submit{
+  margin-left: 20px;
+}
+
+#comment-list{
+  width: 90%;
+  margin: 20px 0 0 50px;
+}

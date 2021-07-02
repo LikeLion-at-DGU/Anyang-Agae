@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Review
+from .models import Review, comment
 from django.db.models import Q
 from django.utils import timezone
 
@@ -32,4 +32,13 @@ def create(request):
 
 def ReviewDetail(request, id):
     review = get_object_or_404(Review, pk =id)
-    return render(request, 'reviews/ReviewDetail.html', {'review': review})
+    all_comments = review.comments.all().order_by('-created_at')
+    return render(request, 'reviews/ReviewDetail.html', {'review': review, 'comments':all_comments})
+
+def create_comment(request, id):
+    if request.method == "POST":
+        review = get_object_or_404(Review, pk=id)
+        current_user = request.user
+        content = request.POST.get('content')
+        comment.objects.create(content=content, writer=current_user, review=review)
+    return redirect('reviews:ReviewDetail', id)

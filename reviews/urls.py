@@ -9,4 +9,5 @@ urlpatterns = [
     path('<str:id>',ReviewDetail, name="ReviewDetail"), #게시글 자세히보는 페이지
     path('create/',create, name="create"), #게시글 작성함수
     # path('delete/',delete, name="delete"), #게시글 삭제함수
+    path('<str:id>/create_comment', create_comment, name="create_comment"), #댓글 작성함수
 ]
