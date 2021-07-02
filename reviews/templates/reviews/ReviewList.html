@@ -20,9 +20,9 @@
           <td>{{ forloop.counter }}</td>
           <td>
             <img class="foot" src="{% static 'img/gallery/foot.png' %}">
-            {{review.title}}
+            <a href="{%url 'reviews:ReviewDetail' review.id%}">[{{review.hospital}}]{{review.title}}</a>
           </td>
-          <td>{{review.summary}}<a href="{%url 'reviews:ReviewDetail' review.id%}">...more</a></td>
+          <td>{{review.pub_date}}</td>
         </tr>
         {% endfor %}
       </tbody>

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Review(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50, null=False)
+    hospital = models.CharField(max_length=100, null=True)
     content = models.TextField()
     pub_date = models.DateTimeField()
     writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

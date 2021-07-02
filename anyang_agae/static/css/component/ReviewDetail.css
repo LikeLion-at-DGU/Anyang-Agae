@@ -21,11 +21,11 @@ body {
   justify-content: center;
 }
 
-.review-date-tr {
+.review-date-tr, .review-hospital-tr {
   border-bottom: 3px solid grey;
 }
 
-.review-date {
+.review-date, .review-hospital {
   font-size: 20px;
   padding-left: 3%;
 }
