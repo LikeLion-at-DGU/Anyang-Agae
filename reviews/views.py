@@ -7,14 +7,8 @@ def write(request):
     return render(request, 'reviews/write.html')
 
 def SearchReview(request):
-    kw = request.GET.get('kw', '')  # 검색어
     reviews = Review.objects.all()
-    # 검색
-    if kw:
-        reviews = reviews.filter(
-            Q(title__icontains=kw) # 제목검색
-        ).distinct()
-    return render(request, 'reviews/SearchReview.html',{'reviews':reviews, 'kw' : kw})
+    return render(request, 'reviews/SearchReview.html',{'reviews':reviews})
 
 def ReviewList(request):
     reviews = Review.objects.all()
@@ -22,7 +16,8 @@ def ReviewList(request):
     # 검색
     if kw:
         reviews = reviews.filter(
-            Q(title__icontains=kw) # 제목검색
+            Q(title__icontains=kw) | # 제목검색
+            Q(writer__username__icontains=kw) # writer색
         ).distinct()
     return render(request, 'reviews/ReviewList.html',{'reviews':reviews, 'kw' : kw})
 
