@@ -15,3 +15,10 @@ class Review(models.Model):
 
     def summary(self):
         return self.content[:10]
+
+class comment(models.Model):
+    content = models.TextField()
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
