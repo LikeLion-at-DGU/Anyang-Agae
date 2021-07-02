@@ -15,10 +15,17 @@
           </td>
         </tr>
         <tr class="review-date-tr">
-          <td class="review-date">{{review.pub_date}}</td>
+          <td class="review-date">작성자: {{user.username}} &nbsp; 작성일자: {{review.pub_date}}</td>
         </tr>
         <tr class="review-hospital-tr">
-          <td class="review-hospital">{{review.hospital}}</td>
+          <td class="review-hospital">위치:
+            {%if review.hospital == none %}
+            (미입력)
+            {% else %}
+            {{review.hospital}}
+
+            {% endif %}
+          </td>
         </tr>
         <tr class="review-content-tr">
           <td class="review-content">{{review.content}}</td>
