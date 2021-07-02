@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+
 <link rel="stylesheet" href="{% static 'css/component/write.css' %}" />
 <script type="text/javascript"
   src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vb350f48ym&submodules=geocoder"></script>
@@ -21,6 +22,7 @@
             <font color=black size="5px"><img src="{% static 'img/gallery/logo_ver2.png' %}" width="20%"> 후기작성</font>
           </td>
         </tr>
+        {%if user.is_authenticated%}
         <tr>
           <td bgcolor=white>
             <table class="table2">
@@ -51,6 +53,18 @@
             </center>
           </td>
         </tr>
+        {% else %}
+        <tr>
+          <td><br><br>
+            <center><h3>로그인 후 이용가능</h3>
+            <form class="">
+              <a class="btn hover-top btn-collab" href="{% url 'account_login' %}">로그인</a>
+              <a class="btn hover-top btn-collab" href="{% url 'account_signup' %}">회원가입</a>
+            </form>
+          </center><br><br>
+          </td>
+        </tr>
+        {% endif %}
         <tr>
           <td bgcolor=white style="text-align: center;"> <img src="{% static 'img/gallery/animalB.png' %}" /></td>
         </tr>
@@ -59,4 +73,8 @@
   </main>
   <script type="text/javascript" src="{% static 'js/component/navermap.js'%}"></script>
 </body>
+
+
+
+
 {% endblock %}
