@@ -17,8 +17,7 @@
         {%if user.is_authenticated%}
         <a class="dn_btn" href="{% url 'users:mypage' %}">{{user.username}}님, 안녕하세요:)</a>
         {% else %}
-        <a class="dn_btn" href="tel:+4400123654896">+440 012 3654 896</a>
-        <a class="dn_btn" href="mailto:support@colorlib.com">support@colorlib.com</a>
+        <a class="dn_btn" href="#">로그인 해주세요</a>
         {% endif %}
       </div>
     </div>
