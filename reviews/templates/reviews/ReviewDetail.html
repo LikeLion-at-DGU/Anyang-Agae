@@ -4,87 +4,102 @@
 
 <link rel="stylesheet" href="{% static 'css/component/ReviewDetail.css' %}" />
 
-<main class="main" id="top">
-  <section class="my-3">
-    <div class="py-6">
-      <table class="table-content">
-        <tr class="review-title-tr">
-          <td class="review-title">
-            <img src="../static/img/gallery/dog.png" />
-            <h2>{{review.title}}</h2>
-          </td>
-        </tr>
-        {%if user.is_authenticated%}
-        <tr class="review-date-tr">
-          <td class="review-date">작성자: {{user.username}} &nbsp; 작성일자: {{review.pub_date}}</td>
-        </tr>
-        <tr class="review-hospital-tr">
-          <td class="review-hospital">위치:
+<section class="contact_area p_120">
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="blog_right_sidebar">
+        <aside class="single_sidebar_widget author_widget">
+          <img class="author_img rounded-circle" src="{% static 'img/gallery/dog.png' %}" alt="">
+          <h2>{{review.title}}</h2>
+          {%if user.is_authenticated%}
+          <p>작성자: {{user.username}}</p>
+          <p>작성일자: {{review.pub_date}}</p>
+          <p>위치:
             {%if review.hospital == none %}
             (미입력)
             {% else %}
             {{review.hospital}}
-
             {% endif %}
-          </td>
-        </tr>
-        <tr class="review-content-tr">
-          <td class="review-content">{{review.content}}</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom: 5%;">
-            <div class="review-btn">
-              <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="#"> 삭제</a>
-              <a class="btn hover-top btn-collab-outline text-gradient ms-2" href="{% url 'reviews:ReviewList' %}">
-                목록가기</a>
-            </div>
-          </td>
+          </p>
+          <div class="br"></div>
+        </aside>
+        <aside class="single_sidebar_widget author_widget">
+          <h5>{{review.content}}</h5>
+          <div class="br"></div>
+          <aside class="single-sidebar-widget newsletter_widget">
+            <a class="bbtns" href="#">수정</a>
+            <a class="bbtns" href="#">삭제</a>
+          </aside>
+
+
+        </aside>
         {% else %}
-        <tr>
-          <td><br><br>
-            <center><h3>로그인하면 상세내용 열람이 가능해요!</h3>
-            <form class="">
-              <a class="btn hover-top btn-collab" href="{% url 'account_login' %}">로그인</a>
-              <a class="btn hover-top btn-collab" href="{% url 'account_signup' %}">회원가입</a>
-              <a class="btn hover-top btn-collab" href="{% url 'reviews:ReviewList' %}">목록가기</a>
-            </form>
-          </center><br><br>
-          </td>
-        </tr>
+        <h3>로그인하면 상세내용 열람이 가능해요!</h3>
+        <aside class="single-sidebar-widget newsletter_widget">
+          <a class="bbtns" href="{% url 'account_login' %}">로그인</a>
+          <a class="bbtns" href="{% url 'account_signup' %}">회원가입</a>
+          <a class="bbtns" href="{% url 'reviews:ReviewList' %}">목록가기</a>
+        </aside>
         {% endif %}
-          
-        </tr>
-      </table>
-    </div>
-    <div id="comment-section">
-      <div class="form-floating">
-        <form class="d-flex justify-content-center" action="{% url 'reviews:create_comment' review.id %}" method="POST">
-          {%csrf_token%}
-          <textarea class="form-control" name="content" id="comment-content" placeholder="댓글 입력"></textarea>
-          <button type="submit" id="comment-submit" class="btn hover-top btn-collab">작성</button>
-        </form>
       </div>
-      <ul id="comment-list" class="list-group list-group-flush">
-        {% for comment in comments %}
-        <li class="list-group-item">
-          {{comment.writer}}<br/>
-          {{comment.created_at}}<br/>
-          {{comment.content}}
-          <i class="bi bi-three-dots-vertical"></i>
-          <div class="dropdown float-end">
-            <button class="dropdown-toggle" id="dropdownMenu">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-              <li><button class="dropdown-item" type="button">수정</button></li>
-              <li><button class="dropdown-item" type="button">삭제</button></li>
-            </ul>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
+      <div id="comment-section">
+        <div class="form-floating">
+          <form class="d-flex justify-content-center" action="{% url 'reviews:create_comment' review.id %}"
+            method="POST">
+            {%csrf_token%}
+            <textarea class="form-control" name="content" id="comment-content" placeholder="댓글 입력"></textarea>
+            <button type="submit" id="comment-submit" value="submit" class="btn submit_btn">작성하기</button>
+          </form>
+        </div>
+        <ul id="comment-list" class="list-group list-group-flush">
+          {% for comment in comments %}
+          <article class="row blog_item">
+            <div class="col-md-3">
+              <div class="blog_info text-right">
+                <!-- <div class="post_tag">
+                  {{ forloop.counter }}
+                </div> -->
+                <ul class="blog_meta list">
+                  <li><a href="#">{{comment.writer}}<i class="lnr lnr-user"></i></a></li>
+                  <li><a href="#">{{comment.created_at}}<i class="lnr lnr-calendar-full"></i></a></li>
+                  <div class="default-select" id="default-select">
+                    <select>
+                      <option value="1">선택</option>
+                      <option value="1">수정</option>
+                      <option value="1">삭제</option>
+                    </select>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="blog_details">
+                <p>{{comment.content}}</p>
+              </div>
+            </div>
+          </article>
+          <!-- <li class="list-group-item">
+            {{comment.writer}}<br />
+            {{comment.created_at}}<br />
+            {{comment.content}} -->
+          <!-- <i class="bi bi-three-dots-vertical"></i> -->
+          <!-- <div class="dropdown float-end">
+              <button class="dropdown-toggle" id="dropdownMenu">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <li><button class="dropdown-item" type="button">수정</button></li>
+                <li><button class="dropdown-item" type="button">삭제</button></li>
+              </ul>
+            </div> -->
+          <!-- </li> -->
+
+          {% endfor %}
+        </ul>
+      </div>
+
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
 {% endblock %}

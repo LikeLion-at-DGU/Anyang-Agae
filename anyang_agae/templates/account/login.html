@@ -1,25 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style>
-    #logout {
-        border: 1px solid #fe9a52;
-    }
-</style>
 
-<center>
-    <main class="main" id="top">
-        <section id="home">
-            <hr>
-            <p><img src="{% static 'img/gallery/dog_1.png' %}" width="20%"></p>
-            <form method="POST" action="{% url 'account_login' %}" id="account">
-                <h2>로그인</h2><br>
-                {% csrf_token %} {{ form.as_p }}
-                <input class="btn hover-top btn-collab-outline text-gradient ms-2" id="logout" type="submit"
-                    value="로그인">
-            </form>
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+    <div class="container">
+      <div class="banner_content text-center">
+        <h2>Login</h2>
+        <div class="page_link">
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        </section>
-    </main>
-</center>
+
+<div style="text-align: center;">
+  <main class="main" id="top">
+    <section id="home">
+      <hr>
+      <p><img src="{% static 'img/gallery/dog_1.png' %}" width="20%"></p>
+      <form method="POST" action="{% url 'account_login' %}" id="account">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" value="submit" class="btn submit_btn">Login</button>
+      </form>
+
+    </section>
+  </main>
+</div>
+
+
 {% endblock %}

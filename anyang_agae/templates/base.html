@@ -12,31 +12,28 @@
 
   <!-- Favicon
   ================================================== -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/favicon-16x16.png' %}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/apple-touch-icon.png' %}">
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicons/favicon.ico' %}">
-  <link rel="manifest" href="{% static 'img/favicons/manifest.json' %}">
-  <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-150x150.png' %}">
+  <link rel="icon" href="{% static 'img/gallery/logo_ver2.png' %}" type="image/png">
 
-  <!-- Bootstrap CSS
-  ================================================== -->
-  <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" /> -->
-  <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/theme-rtl.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/theme-rtl.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/theme-rtl.min.css.map' %}" />
-  <link rel="stylesheet" href="{% static 'css/theme.css.map' %}" />
-  <link rel="stylesheet" href="{% static 'css/theme.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/theme.min.css.map' %}" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/popup/magnific-popup.css' %}">
+
+  <!-- main css -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
   <!-- CSS
   ================================================== -->
   <link rel="stylesheet" href="{% static 'css/variable.css' %}" />
-
 </head>
 
-<body class="container">
+<body>
   <!-- Navigation section
 ================================================== -->
   {% include 'shared/_navbar.html' %}
@@ -51,14 +48,23 @@
 
   <!-- Javascript 
 ================================================== -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/theme.js' %}"></script>
-  <script src="{% static 'js/bootstrap-navbar.js' %}"></script>
-  <script src="{% static 'js/theme.js.map' %}"></script>
-  <script src="{% static 'js/theme.min.js' %}"></script>
-  <script src="{% static 'js/theme.min.js.map' %}"></script>
   <script src="{% static 'js/component/search.js' %}"></script>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/stellar.js' %}"></script>
+  <script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+  <script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendors/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static 'vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'vendors/counter-up/jquery.counterup.js' %}"></script>
+  <script src="{% static 'js/mail-script.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
 </body>
 
 </html>
