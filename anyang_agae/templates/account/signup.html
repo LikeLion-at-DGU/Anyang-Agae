@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style>
-    #logout {
-        border: 1px solid #fe9a52;
-    }
-</style>
 
-<center>
-    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+<div style="text-align: center;">
     <main class="main" id="top">
-        <section id="home">
+        <section id="home" class="mt-3">
             <hr>
 
             <form method="POST" action="{% url 'account_signup' %}" id="account">
@@ -22,5 +16,5 @@
             </form>
         </section>
     </main>
-</center>
+</div>
 {% endblock %}

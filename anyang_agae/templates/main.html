@@ -8,7 +8,7 @@
     </div>
     <div class="container">
       <div class="banner_content text-center">
-        <h3>아프냥 <br />나도아프개</h3>
+        <p id="header" class="mb-3"><b>아프냥? 나도아프개!</b></p>
         <p>내 새끼의 안전한 치료를 위해 집사들이 직접쓰는 리뷰</p>
         <a class="main_btn" href="#">리뷰검색</a>
         <a class="main_btn" href="{% url 'reviews:write' %}">리뷰쓰기</a>
@@ -23,163 +23,76 @@
   <div class="container">
     <div class="finance_inner row">
       <div class="col-lg-3 col-sm-6">
-        <div class="finance_item">
+        <a class="finance_item" href="#hospital_area">
           <div class="media">
             <div class="d-flex">
-              <i class="lnr lnr-rocket"></i>
+              <i class="bi bi-moon"></i>
             </div>
             <div class="media-body">
-              <h5>Science & <br />Engineering</h5>
+              <p class="icon-description">밤에도 진료 가능한 병원</p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="finance_item">
+        <a class="finance_item" href="#community_area">
           <div class="media">
             <div class="d-flex">
-              <i class="lnr lnr-earth"></i>
+              <i class="bi bi-chat-dots"></i>
             </div>
             <div class="media-body">
-              <h5>Science & <br />Engineering</h5>
+              <p class="icon-description">집사들의 커뮤니티</p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="finance_item">
+        <a class="finance_item" href="#review_area">
           <div class="media">
             <div class="d-flex">
-              <i class="lnr lnr-smile"></i>
+              <i class="bi bi-clipboard-plus"></i>
             </div>
             <div class="media-body">
-              <h5>Science & <br />Engineering</h5>
+              <p class="icon-description">진찰 기록과 리뷰</p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="finance_item">
+        <a class="finance_item" href="#diary_area">
           <div class="media">
             <div class="d-flex">
-              <i class="lnr lnr-tag"></i>
+              <i class="bi bi-calendar-check"></i>
             </div>
             <div class="media-body">
-              <h5>Science & <br />Engineering</h5>
+              <p class="icon-description">내새끼 건강 일기</p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
 </section>
 <!--================End Finance Area =================-->
 
-<!--================Courses Area =================-->
-<section class="courses_area p_120">
+<!--================hospital Area =================-->
+<section class="p_120" id="hospital_area">
   <div class="container">
-    <div class="main_title">
-      <h2>Popular Free Courses</h2>
-      <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-        exciting to think about setting up your own viewing station.</p>
-    </div>
-    <div class="row courses_inner">
-      <div class="col-lg-9">
-        <div class="grid_inner">
-          <div class="grid_item wd55">
-            <div class="courses_item">
-              <img src="img/courses/course-1.jpg" alt="">
-              <div class="hover_text">
-                <a class="cat" href="#">Free</a>
-                <a href="#">
-                  <h4>Japanease Language Class</h4>
-                </a>
-                <ul class="list">
-                  <li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-                  <li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-                  <li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="grid_item wd44">
-            <div class="courses_item">
-              <img src="img/courses/course-2.jpg" alt="">
-              <div class="hover_text">
-                <a class="cat" href="#">Free</a>
-                <a href="#">
-                  <h4>Japanease Language Class</h4>
-                </a>
-                <ul class="list">
-                  <li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-                  <li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-                  <li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="grid_item wd44">
-            <div class="courses_item">
-              <img src="img/courses/course-4.jpg" alt="">
-              <div class="hover_text">
-                <a class="cat" href="#">Free</a>
-                <a href="#">
-                  <h4>Japanease Language Class</h4>
-                </a>
-                <ul class="list">
-                  <li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-                  <li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-                  <li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="grid_item wd55">
-            <div class="courses_item">
-              <img src="img/courses/course-5.jpg" alt="">
-              <div class="hover_text">
-                <a class="cat" href="#">Free</a>
-                <a href="#">
-                  <h4>Japanease Language Class</h4>
-                </a>
-                <ul class="list">
-                  <li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-                  <li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-                  <li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="main_title text-center">
+      <div class="head-p">
+        <p>내 주변 24시간 병원</p>
       </div>
-      <div class="col-lg-3">
-        <div class="course_item">
-          <img src="img/courses/course-3.jpg" alt="">
-          <div class="hover_text">
-            <a class="cat" href="#">Free</a>
-            <a href="#">
-              <h4>Japanease Language Class</h4>
-            </a>
-            <ul class="list">
-              <li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-              <li><a href="#"><i class="lnr lnr-bubble"></i> 35</a></li>
-              <li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <p class="fadeInUp wow" data-wow-duration="2s" data-wow-delay="0.1s">언제든지 방문할 수 있는 병원을 찾아보세요</p>
     </div>
   </div>
 </section>
 <!--================End Courses Area =================-->
 
-<!--================Team Area =================-->
-<section class="team_area p_120">
+<!--================community Area =================-->
+<section class="team_area p_120" id="community_area">
   <div class="container">
-    <div class="main_title">
-      <h2>Meet Our Faculty</h2>
-      <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-        exciting to think about setting up your own viewing station.</p>
+    <div class="main_title head-h">
+      <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.3s" style="color: #777777;">집사들의 대화 공간</h2>
     </div>
     <div class="row team_inner">
       <div class="col-lg-3 col-sm-6">
@@ -252,13 +165,17 @@
 <!--================End Team Area =================-->
 
 <!--================Testimonials Area =================-->
-<section class="testimonials_area p_120">
+<section class="testimonials_area p_120" id="review_area">
   <div class="container">
+    <div class="text-left head-p">
+      <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.3s">집사들의 <br/>솔직한 리뷰</h2>
+    </div>
     <div class="testi_slider owl-carousel">
+      {% for review in reviews%}
       <div class="item">
         <div class="testi_item">
           <img src="img/testimonials/testi-3.png" alt="">
-          <h4>Fannie Rowe</h4>
+          <h4 class="mb-2">[{{review.hospital}}] {{review.title}}</h4>
           <ul class="list">
             <li><a href="#"><i class="fa fa-star"></i></a></li>
             <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -266,57 +183,25 @@
             <li><a href="#"><i class="fa fa-star"></i></a></li>
             <li><a href="#"><i class="fa fa-star"></i></a></li>
           </ul>
-          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner,
-            speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner,
-            speaker.</p>
+          <p>{{review.writer}}</p>
+          <p>{{review.content}}</p>
         </div>
       </div>
-      <div class="item">
-        <div class="testi_item">
-          <img src="img/testimonials/testi-3.png" alt="">
-          <h4>Fannie Rowe</h4>
-          <ul class="list">
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-          </ul>
-          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner,
-            speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner,
-            speaker.</p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="testi_item">
-          <img src="img/testimonials/testi-3.png" alt="">
-          <h4>Fannie Rowe</h4>
-          <ul class="list">
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-            <li><a href="#"><i class="fa fa-star"></i></a></li>
-          </ul>
-          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner,
-            speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner,
-            speaker.</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 <!--================End Testimonials Area =================-->
 
 <!--================Pagkages Area =================-->
-<section class="packages_area p_120">
+<section class="packages_area p_120" id="diary_area">
   <div class="container">
     <div class="row packages_inner">
       <div class="col-lg-4">
-        <div class="packages_text">
-          <h3>Choose <br />Course Packages</h3>
-          <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope.
-            It’s exciting to think about setting up your own viewing station.</p>
+        <div class="packages_text head-h">
+          <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.1s">건강일기 <br /></h2>
+          <p class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.4s">내 반려동물의 건강관리를 위해서, 건강 관리 일기에 기록하세요. 소중한 시간을 아껴드립니다.
+          </p>
         </div>
       </div>
       <div class="col-lg-4">
@@ -364,74 +249,61 @@
 </section>
 <!--================End Pagkages Area =================-->
 
-<!--================Latest Blog Area =================-->
-<section class="latest_blog_area p_120">
-  <div class="container">
-    <div class="main_title">
-      <h2>Latest Posts From Blog</h2>
-      <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-        exciting to think about setting up your own viewing station.</p>
-    </div>
-    <div class="row latest_blog_inner">
-      <div class="col-lg-3 col-md-6">
-        <div class="l_blog_item">
-          <img class="img-fluid" src="img/latest-blog/l-blog-1.jpg" alt="">
-          <a class="date" href="#">25 October, 2018 | By Mark Wiens</a>
-          <a href="single-blog.html">
-            <h4>Addiction When Gambling Becomes A Problem</h4>
-          </a>
-          <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
-            front of their desktops, while delivery</p>
+<!--================Developer info =================-->
+<div class="modal" id="developer-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Developer</h5>
+      </div>
+      <div class="modal-body">
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">김성민</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">정재경</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">안소은</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">이슬기</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">이소정</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">이소현</p>
+          </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="l_blog_item">
-          <img class="img-fluid" src="img/latest-blog/l-blog-2.jpg" alt="">
-          <a class="date" href="#">25 October, 2018 | By Mark Wiens</a>
-          <a href="single-blog.html">
-            <h4>Addiction When Gambling Becomes A Problem</h4>
-          </a>
-          <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
-            front of their desktops, while delivery</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="l_blog_item">
-          <img class="img-fluid" src="img/latest-blog/l-blog-3.jpg" alt="">
-          <a class="date" href="#">25 October, 2018 | By Mark Wiens</a>
-          <a href="single-blog.html">
-            <h4>Addiction When Gambling Becomes A Problem</h4>
-          </a>
-          <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
-            front of their desktops, while delivery</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="l_blog_item">
-          <img class="img-fluid" src="img/latest-blog/l-blog-4.jpg" alt="">
-          <a class="date" href="#">25 October, 2018 | By Mark Wiens</a>
-          <a href="single-blog.html">
-            <h4>Addiction When Gambling Becomes A Problem</h4>
-          </a>
-          <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
-            front of their desktops, while delivery</p>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</section>
-<!--================End Latest Blog Area =================-->
+</div>
 
-<!--================Impress Area =================-->
-<section class="impress_area p_120">
+<section class="p_120" id="contact-area">
   <div class="container">
     <div class="impress_inner text-center">
-      <h2>Become an instructor</h2>
-      <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-        exciting to think about setting up your own viewing station whether that is on the deck</p>
-      <a class="main_btn2" href="#">Apply for the post</a>
+      <h2>Developer</h2>
+      <p>- 서비스 개발자를 소개합니다 -</p>
+      <a class="main_btn2" data-bs-toggle="modal" href="#developer-modal" role="button">Contact</a>
     </div>
   </div>
 </section>
+
 
 {% endblock %}
