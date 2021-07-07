@@ -18,6 +18,8 @@
 </section>
 <!--================End Home Banner Area =================-->
 
+<link rel="stylesheet" href="{% static 'css/component/main.css' %}">
+
 <!--================Finance Area =================-->
 <section class="finance_area">
   <div class="container">
@@ -168,7 +170,7 @@
 <section class="testimonials_area p_120" id="review_area">
   <div class="container">
     <div class="text-left head-p">
-      <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.3s">집사들의 <br/>솔직한 리뷰</h2>
+      <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.3s">집사들의 <br />솔직한 리뷰</h2>
     </div>
     <div class="testi_slider owl-carousel">
       {% for review in reviews%}
@@ -200,7 +202,8 @@
       <div class="col-lg-4">
         <div class="packages_text head-h">
           <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.1s">건강일기 <br /></h2>
-          <p class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.4s">내 반려동물의 건강관리를 위해서, 건강 관리 일기에 기록하세요. 소중한 시간을 아껴드립니다.
+          <p class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.4s">내 반려동물의 건강관리를 위해서, 건강 관리 일기에 기록하세요. 소중한 시간을
+            아껴드립니다.
           </p>
         </div>
       </div>
@@ -264,17 +267,7 @@
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">정재경</p>
-          </div>
-        </div>
-        <div class="card text-center col-sm-3 m-2" style="float: left;">
-          <div class="card-body">
             <p class="card-title">안소은</p>
-          </div>
-        </div>
-        <div class="card text-center col-sm-3 m-2" style="float: left;">
-          <div class="card-body">
-            <p class="card-title">이슬기</p>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
@@ -285,6 +278,16 @@
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
             <p class="card-title">이소현</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">이슬기</p>
+          </div>
+        </div>
+        <div class="card text-center col-sm-3 m-2" style="float: left;">
+          <div class="card-body">
+            <p class="card-title">정재경</p>
           </div>
         </div>
       </div>

@@ -2,19 +2,19 @@
 {% load static %}
 {% block content %}
 
-<div style="text-align: center;">
-    <main class="main" id="top">
-        <section id="home" class="mt-3">
-            <hr>
+<section class="contact_area p_120">
+  <div class="container">
+    <p class="page-title-nomargin"><img src="{% static 'img/gallery/foot.png' %}" width="4%">&nbsp;회원가입</p><Br>
+    <p class="page-subtitle" style="color:var(--main-orange);">지금 바로 아냥아개를 시작하세요!</p><br>
+    <div class="signup-container">
+      <form method="POST" action="{% url 'account_signup' %}" id="account">
+        {% csrf_token %} {{ form.as_p }}
+        <div style="text-align: center;">
+          <input type="submit" class="btn submit_btn" id="signup" value="회원가입">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
-            <form method="POST" action="{% url 'account_signup' %}" id="account">
-                <h1><img src="{% static 'img/gallery/foot.png' %}" width="4%">&nbsp;회원가입</h1><Br>
-                <h4 style="color:#fe9a52;">지금 바로 아냥아개를 시작하세요!</h4><br>
-                {% csrf_token %} {{ form.as_p }}
-                <input type="submit" class="btn hover-top btn-collab-outline text-gradient ms-2" id="logout"
-                    value="회원가입">
-            </form>
-        </section>
-    </main>
-</div>
 {% endblock %}

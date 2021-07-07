@@ -2,11 +2,9 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" href="{% static 'css/component/SearchReview.css' %}" />
-
 <section class="contact_area p_120">
   <div class="container">
-    <h1>키워드를 입력해주세요.</h1>
+    <p class="page-title">키워드를 입력해주세요.</p>
     <div class="blog_right_sidebar">
       <div class="single_sidebar_widget search_widget">
         <div class="input-group">
@@ -18,9 +16,9 @@
             </button>
           </span>
         </div><!-- /input-group -->
-        <div class="br text-center">
+        <p class="br page-subtitle text-center">
           제목, 작성자로 키워드 검색이 가능합니다.
-        </div>
+        </p>
       </div>
     </div>
     <form id="searchForm" method="get" action="{% url 'reviews:ReviewList' %}">

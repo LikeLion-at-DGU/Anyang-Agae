@@ -17,7 +17,7 @@
         {%if user.is_authenticated%}
         <a class="dn_btn" href="{% url 'users:mypage' %}">{{user.username}}님, 안녕하세요:)</a>
         {% else %}
-        <a class="dn_btn" href="#">로그인 해주세요</a>
+        <a class="dn_btn" href="{% url 'main' %}">내 새끼의 안전한 치료를 위해 집사들이 직접쓰는 리뷰</a>
         {% endif %}
       </div>
     </div>
