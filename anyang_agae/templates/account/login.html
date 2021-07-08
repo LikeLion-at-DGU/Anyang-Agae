@@ -2,35 +2,15 @@
 {% load static %}
 {% block content %}
 
-<section class="banner_area">
-  <div class="banner_inner d-flex align-items-center">
-    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-    <div class="container">
-      <div class="banner_content text-center">
-        <h2>Login</h2>
-        <div class="page_link">
-          <a href="index.html">Home</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-    </div>
+<section class="contact_area p_120" style="text-align: center;">
+  <div class="container">
+    <p class="page-title">로그인</p>
+    <p><img src="{% static 'img/gallery/dog_1.png' %}" width="20%"></p>
+    <form method="POST" action="{% url 'account_login' %}" id="account">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" value="submit" class="btn submit_btn">Login</button>
+    </form>
   </div>
 </section>
-
-
-<div style="text-align: center;">
-  <main class="main" id="top">
-    <section id="home">
-      <hr>
-      <p><img src="{% static 'img/gallery/dog_1.png' %}" width="20%"></p>
-      <form method="POST" action="{% url 'account_login' %}" id="account">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit" value="submit" class="btn submit_btn">Login</button>
-      </form>
-
-    </section>
-  </main>
-</div>
-
 
 {% endblock %}

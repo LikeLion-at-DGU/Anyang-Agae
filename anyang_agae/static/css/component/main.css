@@ -1,39 +1,40 @@
-.head-p>h2{
-    font-size: 3.5rem;
-    padding-bottom: 30px;
-    margin-left: 80px;
+.head-p > h2 {
+  font-size: 3.5rem;
+  padding-bottom: 30px;
+  margin-left: 80px;
 }
 
-.head-p>p{
-    font-size: 2rem;
-    padding-bottom: 30px;
+.head-p > p {
+  font-size: 2rem;
+  padding-bottom: 30px;
 }
 
-.head-h>h2{
-    font-size: 3.5rem;
+.head-h > h2 {
+  font-size: 3.5rem;
 }
 
-#header{
-    font-size: xx-large;
+#header {
+  font-size: xx-large;
 }
 
-.icon-description{
-    font-size: large;
-    margin-top: 8%;
-    color: #777777;
+.icon-description {
+  font-size: large;
+  margin-top: 8%;
+  color: #777777;
 }
 
-#developer-modal .modal-header h5{
-    color: #4CBF1C;
+#developer-modal .modal-header h5 {
+  color: var(--main-green);
 }
 
-#contact-area{
-    background-image: url('../../img/component/footer-1.jpeg');
-    background-size: 100%;
-    background-position-y: -300px;
-    opacity: 0.9;
+#contact-area {
+  background-image: url("../../img/component/footer-1.jpeg");
+  background-size: 100%;
+  background-position-y: -300px;
+  opacity: 0.9;
 }
 
-.impress_inner>h2, .impress_inner>p{
-    color: white;
+.impress_inner > h2,
+.impress_inner > p {
+  color: white;
 }
