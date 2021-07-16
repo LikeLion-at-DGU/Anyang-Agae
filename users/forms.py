@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from users.models import Profile
 
 OPENED_CHOICES = [
-    ('OPEN', '공개'),
-    ('NOT_OPEN', '비공개'),
+    ('공개', '공개'),
+    ('비공개', '비공개'),
 ]
 
 

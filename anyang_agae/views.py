@@ -6,5 +6,5 @@ from users.models import Profile
 def main(request):
     review = Review.objects.all().order_by('-pub_date')
     reviews = review[:3]
-    profile = Profile.objects.filter(is_opened='OPEN')
+    profile = Profile.objects.filter(is_opened=['공개'])
     return render(request, 'main.html', {'reviews': reviews, 'profile': profile})

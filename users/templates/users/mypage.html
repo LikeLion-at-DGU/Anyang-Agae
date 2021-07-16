@@ -36,7 +36,7 @@
               <div class="card-body">
                 <h5>ID : {{user.username}}</h5>
                 <h5>Email : {{user.email}} </h5>
-                <h5>공개 여부 : {{profile.is_opened}}</h5>
+                <h5>공개 여부 : {{user.profile.is_opened|slice:"2:4"}}</h5>
               </div>
             </div>
           </div>

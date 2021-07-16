@@ -4,9 +4,14 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    class Meta:
+        ordering = ['id']
+        db_table = 'user_profile'
+
+        verbose_name = 'user_profile'
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     OPENED_CHOICES = (
-        ('OPEN', '공개'), ('NOT_OPEN', '비공개')
+        ('공개', '공개'), ('비공개', '비공개')
     )
     is_opened = models.CharField(
-        max_length=10, choices=OPENED_CHOICES, default='OPEN', null=True)
+        max_length=10, choices=OPENED_CHOICES, default='공개')
