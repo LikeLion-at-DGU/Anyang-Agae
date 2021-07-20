@@ -97,6 +97,7 @@
       <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.3s" style="color: #777777;">집사들의 대화 공간</h2>
     </div>
     <div class="row team_inner">
+      {% for user in profile %}
       <div class="col-lg-3 col-sm-6">
         <div class="team_item">
           <div class="team_img">
@@ -108,59 +109,11 @@
             </div>
           </div>
           <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
+            <h4>{{ user.user }}</h4>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="team_item">
-          <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-2.jpg" alt="">
-            <div class="hover">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="team_item">
-          <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-3.jpg" alt="">
-            <div class="hover">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="team_item">
-          <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-4.jpg" alt="">
-            <div class="hover">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
