@@ -1,0 +1,19 @@
+.map_menu_wrap,
+.map_menu_wrap * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 60px 0 30px 140px;
+  z-index: 2;
+  height: auto;
+  min-height: 100px;
+  background-color: white;
+}
+
+.map {
+  position: relative;
+}
+
+#hospitalList {
+  overflow: hidden;
+}

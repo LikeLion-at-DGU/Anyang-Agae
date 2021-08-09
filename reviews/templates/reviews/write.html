@@ -4,9 +4,7 @@
 
 <link rel="stylesheet" href="{% static 'css/component/write.css' %}" />
 <script type="text/javascript"
-  src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vb350f48ym&submodules=geocoder"></script>
-<script type="text/javascript" src="{% static 'js/component/navermap.js'%}"></script>
-
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ae62fa65184acae545a359f6f14c8d0&libraries=services"></script>
 
 <!--================Contact Area =================-->
 <section class="contact_area p_120">
@@ -19,6 +17,14 @@
           <span style="font-size: 30px;">리뷰작성</span>
         </aside>
         {%if user.is_authenticated%}
+        <div class="map_menu_wrap text-center" style="position: absolute; top: 30%; left: 50px; margin: 3.3% 0 0 15%; z-index: 2; width: 300px; height: auto; min-height: 100px; background: rgba(255, 255, 255, 0.7);">
+          <form onsubmit="searchPlaces(); return false">
+            {% csrf_token %}
+            <input type="text" id="hospital" size=30 placeholder="찾으시는 병원"/>
+            <button type="submit" class="btn btn-default" id="hospital_submit">검색</button>
+          </form>
+          <div id="hospitalList" style="max-height: 270px; overflow: scroll;"></div>
+        </div>
 
         <form action="{%url 'reviews:create'%}" method="post">
           {% csrf_token %}
@@ -33,16 +39,13 @@
                         <td>제목</td>
                         <td><input class="write-content" type="text" name="title"></td>
                       </tr>
-                      <!-- <tr>
+                      <tr>
                         <td>병원</td>
                         <td>
-                          <div class="search">
-                            <input type="text" id="hospital" name="hospital" size=30 />
-                            <a class="btn btn-default" id="searchsubmit">검색</a>
-                          </div>
+                          <input class="write-content" type="text" name="hospital" />
                           <div id="map" style="width:100%;height:330px;"></div>
                         </td>
-                      </tr> -->
+                      </tr>
                       <tr>
                         <td>내용</td>
                         <td><textarea class="write-content" type="text" name="content" rows=15></textarea></td>
@@ -73,6 +76,94 @@
     </div>
   </div>
 </section>
+<script>
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+  mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3, // 지도의 확대 레벨
+  }
+
+  // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+  var map = new kakao.maps.Map(mapContainer, mapOption);
+
+  let markerList = []
+  
+  let ps = new kakao.maps.services.Places();
+  function searchPlaces() {
+    let keyword = $("#hospital").val();
+    ps.keywordSearch(keyword, placesSearchCB);
+  }
+
+  function placesSearchCB(data, status) {
+    if (status === kakao.maps.services.Status.OK){
+      displayPlaces(data);
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT){
+      alert("검색 결과가 존재하지 않습니다.");
+    } else if (status === kakao.maps.services.Status.ERROR) {
+      alert("검색 결과 중 오류가 발생했습니다.");
+      return;
+    }
+  }
+
+  function displayPlaces(data) {
+    var hospitalList = document.querySelector('#hospitalList');
+    var bounds = new kakao.maps.LatLngBounds(); // 마커할 때 사용하는 함수
+    for (let i = 0; i < data.length; i++){
+      let lat = data[i].y; //위도
+      let lng = data[i].x; //경도
+      let address_name = data[i]["address_name"];
+      let place_name = data[i]["place_name"];
+
+      const placePosition = new kakao.maps.LatLng(lat, lng);
+      bounds.extend(placePosition); // bounds에 추가
+      let marker = new kakao.maps.Marker({
+        position: placePosition
+      }); // 마커에 추가
+
+      marker.setMap(map);
+      markerList.push(marker);
+
+      const el = document.createElement("div");
+      const itemStr = `
+        <p class="placename">병원명 : ${place_name}</p>
+        <p class="addressname">주소 : ${address_name}</p>
+        <hr/>
+      `;
+      el.innerHTML = itemStr;
+
+      let infowindow = new kakao.maps.InfoWindow({
+        zIndex: 1,
+      });
+
+      //  인포 윈도우 클릭 이벤트 //
+      kakao.maps.event.addListener(marker, "click", function(){
+        displayInfoWindows(marker, place_name, address_name, lat, lng);
+      });
+      kakao.maps.event.addListener(marker, "click", function(){
+        infowindow.close();
+      });
+      el.onclick = function() {
+        displayInfoWindows(marker, place_name, address_name, lat, lng);
+      };
+
+      hospitalList.appendChild(el);
+    }
+    map.setBounds(bounds);
+  }
+
+  function displayInfoWindows(marker, place_name, address_name, lat, lng){
+    var content = `
+      <div style="padding: 30px;">
+        병원명 : ${place_name} <br/>
+        주소 : ${address_name} <br/>
+        <button>등록</button>
+      </div>
+    `;
+    map.panTo(marker.getPosition()); // 해당 위치 불러옴
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+  }
+</script>
 
 
 {% endblock %}
