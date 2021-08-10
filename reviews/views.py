@@ -41,6 +41,8 @@ def create(request):
 
 def ReviewDetail(request, id):
     review = get_object_or_404(Review, pk =id)
+    review.view_count += 1
+    review.save()
     all_comments = review.comments.all().order_by('-created_at')
     return render(request, 'reviews/ReviewDetail.html', {'review': review, 'comments':all_comments})
 
