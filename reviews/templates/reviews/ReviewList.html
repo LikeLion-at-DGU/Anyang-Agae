@@ -25,17 +25,39 @@
     <div class="single-element-widget sort">
       <div class="single-element-widget default-select sort-select" id="default-select">
         <select>
-          <option value="recent">최신순</option>
-          <option value="recommend">추천순</option>
-          <option value="click">클릭순</option>
-          <option value="review">리뷰순</option>
+          {% if "/?review" in request.get_full_path %}
+          <option class="sort-recent" selected value="?sort=recent" selected>최신순</option>
+          <option class="sort-click" value="?sort=click">클릭순</option>
+          <option class="sort-recommend" value="?sort=recommend">추천순</option>
+          <option class="sort-review" selected value="?sort=review">리뷰순</option>
+
+          {% elif "/?click" in request.get_full_path %}
+          <option class="sort-recent" value="?sort=recent">최신순</option>
+          <option class="sort-click" selected value="?sort=click">클릭순</option>
+          <option class="sort-recommend" value="?sort=recommend">추천순</option>
+          <option class="sort-review" value="?sort=review">리뷰순</option>
+
+          {% elif "/?recommend" in request.get_full_path %}
+          <option class="sort-recent" value="?sort=recent">최신순</option>
+          <option class="sort-click" value="?sort=click">클릭순</option>
+          <option class="sort-recommend" selected value="?sort=recommend">추천순</option>
+          <option class="sort-review" value="?sort=review">리뷰순</option>
+
+          {% else %}
+          <option class="sort-recent" selected value="?sort=recent">최신순</option>
+          <option class="sort-click" value="?sort=click">클릭순</option>
+          <option class="sort-recommend" value="?sort=recommend">추천순</option>
+          <option class="sort-review" value="?sort=review">리뷰순</option>
+
+          {% endif %}
+
         </select>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
         <div class="blog_left_sidebar">
-          {% for review in page_obj %}
+          {% for review in reviews %}
           <article class="row blog_item">
             <div class="col-md-3">
               <div class="blog_info text-right">
@@ -69,12 +91,12 @@
           </article>
           {% endfor %}
 
-          <!-- Pagination 구현 중 -->
+          <!-- Pagination  -->
           <nav class="blog-pagination justify-content-center d-flex">
             <ul class="pagination">
-              {% if page_obj.has_previous %}
+              {% if reviews.has_previous %}
               <li class="page-item">
-                <a data-page="{{ page_obj.previous_page_number }}" href="#" class="page-link" aria-label="Previous">
+                <a data-page="{{ reviews.previous_page_number }}" href="#" class="page-link" aria-label="Previous">
                   <span aria-hidden="true">
                     <span class="lnr lnr-chevron-left"></span>
                   </span>
@@ -82,8 +104,8 @@
               </li>
               {% endif %}
 
-              {% for page_number in page_obj.paginator.page_range %}
-              {% if page_number == page_obj.number %}
+              {% for page_number in reviews.paginator.page_range %}
+              {% if page_number == reviews.number %}
               <li class="page-item active">
                 <a href="?page={{ page_number }}" class="page-link" data-page="{{ page_number }}">{{page_number}}</a>
               </li>
@@ -94,9 +116,9 @@
               {% endif %}
               {% endfor %}
 
-              {% if page_obj.has_next %}
+              {% if reviews.has_next %}
               <li class="page-item">
-                <a href="?page={{ page_number }}" class="page-link" data-page="{{ page_obj.next_page_number }}"
+                <a href="?page={{ page_number }}" class="page-link" data-page="{{ reviews.next_page_number }}"
                   aria-label="Next">
                   <span aria-hidden="true">
                     <span class="lnr lnr-chevron-right"></span>
@@ -109,10 +131,17 @@
         </div>
       </div>
     </div>
+    <form id="searchForm" method="get" action="{% url 'reviews:ReviewList' %}">
+      <!-- <input type="hidden" id="sort" name="sort" value="{{ sort }}"> -->
+      <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+      <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
   </div>
 </section>
-<!--================Blog Area =================-->
 
 <link rel="stylesheet" href="{% static 'css/component/ReviewList.css' %}" />
+<script type="text/javascript" src="{% static 'js/component/sort.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/component/search.js'%}"></script>
+
 
 {% endblock %}
