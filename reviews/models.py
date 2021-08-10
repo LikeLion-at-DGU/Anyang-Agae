@@ -9,6 +9,7 @@ class Review(models.Model):
     content = models.TextField()
     pub_date = models.DateTimeField()
     writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    view_count = models.IntegerField(default=0)
     
     def __str__(self):
         return self.title
@@ -16,7 +17,7 @@ class Review(models.Model):
     def summary(self):
         return self.content[:10]
 
-class comment(models.Model):
+class Comment(models.Model):
     content = models.TextField()
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')

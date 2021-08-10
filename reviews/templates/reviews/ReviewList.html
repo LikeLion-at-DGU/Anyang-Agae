@@ -22,6 +22,38 @@
 <!--================Blog Categorie Area =================-->
 <section class="blog_area">
   <div class="container">
+    <div class="single-element-widget sort">
+      <div class="single-element-widget default-select sort-select" id="default-select">
+        <select>
+          {% if "/?review" in request.get_full_path %}
+          <option class="sort-recent" selected value="?sort=recent" selected>최신순</option>
+          <option class="sort-click" value="?sort=click">클릭순</option>
+          <option class="sort-recommend" value="?sort=recommend">추천순</option>
+          <option class="sort-review" selected value="?sort=review">리뷰순</option>
+
+          {% elif "/?click" in request.get_full_path %}
+          <option class="sort-recent" value="?sort=recent">최신순</option>
+          <option class="sort-click" selected value="?sort=click">클릭순</option>
+          <option class="sort-recommend" value="?sort=recommend">추천순</option>
+          <option class="sort-review" value="?sort=review">리뷰순</option>
+
+          {% elif "/?recommend" in request.get_full_path %}
+          <option class="sort-recent" value="?sort=recent">최신순</option>
+          <option class="sort-click" value="?sort=click">클릭순</option>
+          <option class="sort-recommend" selected value="?sort=recommend">추천순</option>
+          <option class="sort-review" value="?sort=review">리뷰순</option>
+
+          {% else %}
+          <option class="sort-recent" selected value="?sort=recent">최신순</option>
+          <option class="sort-click" value="?sort=click">클릭순</option>
+          <option class="sort-recommend" value="?sort=recommend">추천순</option>
+          <option class="sort-review" value="?sort=review">리뷰순</option>
+
+          {% endif %}
+
+        </select>
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-12">
         <div class="blog_left_sidebar">
@@ -35,8 +67,8 @@
                 <ul class="blog_meta list">
                   <li><a href="#">{{review.writer}}<i class="lnr lnr-user"></i></a></li>
                   <li><a href="#">{{review.pub_date}}<i class="lnr lnr-calendar-full"></i></a></li>
-                  <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                  <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                  <li><a href="#">{{review.view_count}}<i class="lnr lnr-eye"></i></a></li>
+                  <li><a href="#">{{review.comments.count}} Comments<i class="lnr lnr-bubble"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -59,36 +91,57 @@
           </article>
           {% endfor %}
 
+          <!-- Pagination  -->
           <nav class="blog-pagination justify-content-center d-flex">
             <ul class="pagination">
+              {% if reviews.has_previous %}
               <li class="page-item">
-                <a href="#" class="page-link" aria-label="Previous">
+                <a data-page="{{ reviews.previous_page_number }}" href="#" class="page-link" aria-label="Previous">
                   <span aria-hidden="true">
                     <span class="lnr lnr-chevron-left"></span>
                   </span>
                 </a>
               </li>
-              <li class="page-item"><a href="#" class="page-link">01</a></li>
-              <li class="page-item active"><a href="#" class="page-link">02</a></li>
-              <li class="page-item"><a href="#" class="page-link">03</a></li>
-              <li class="page-item"><a href="#" class="page-link">04</a></li>
-              <li class="page-item"><a href="#" class="page-link">09</a></li>
+              {% endif %}
+
+              {% for page_number in reviews.paginator.page_range %}
+              {% if page_number == reviews.number %}
+              <li class="page-item active">
+                <a href="?page={{ page_number }}" class="page-link" data-page="{{ page_number }}">{{page_number}}</a>
+              </li>
+              {% else %}
               <li class="page-item">
-                <a href="#" class="page-link" aria-label="Next">
+                <a href="?page={{ page_number }}" class="page-link" data-page="{{ page_number }}">{{page_number}}</a>
+              </li>
+              {% endif %}
+              {% endfor %}
+
+              {% if reviews.has_next %}
+              <li class="page-item">
+                <a href="?page={{ page_number }}" class="page-link" data-page="{{ reviews.next_page_number }}"
+                  aria-label="Next">
                   <span aria-hidden="true">
                     <span class="lnr lnr-chevron-right"></span>
                   </span>
                 </a>
               </li>
+              {% endif %}
             </ul>
           </nav>
         </div>
       </div>
     </div>
+    <form id="searchForm" method="get" action="{% url 'reviews:ReviewList' %}">
+      <!-- <input type="hidden" id="sort" name="sort" value="{{ sort }}"> -->
+      <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+      <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
   </div>
 </section>
-<!--================Blog Area =================-->
 
 <link rel="stylesheet" href="{% static 'css/component/ReviewList.css' %}" />
+<script type="text/javascript" src="{% static 'js/component/sort.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/component/search.js'%}"></script>
+
 
 {% endblock %}
