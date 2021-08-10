@@ -8,7 +8,7 @@
     <div class="blog_right_sidebar">
       <div class="single_sidebar_widget search_widget">
         <div class="input-group">
-          <input type="text" class="form-control kw" placeholder="Search Posts" onkeyup="search()"
+          <input type="text" class="form-control kw search-input" placeholder="Search Posts" onkeyup="search()"
             value="{{ kw|default_if_none:'' }}">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" onclick="clickSearch()">
@@ -23,9 +23,12 @@
     </div>
     <form id="searchForm" method="get" action="{% url 'reviews:ReviewList' %}">
       <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+      <input type="hidden" id="page" name="page" value="{{ page }}">
     </form>
   </div>
 </section>
 
+<link rel="stylesheet" href="{% static 'css/component/SearchReview.css' %}" />
+<script type="text/javascript" src="{% static 'js/component/search.js'%}"></script>
 
 {% endblock %}
