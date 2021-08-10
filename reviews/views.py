@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Review, comment
+from .models import Review, Comment
 from django.db.models import Q
 from django.utils import timezone
+from django.core.paginator import Paginator
 
 def write(request):
     return render(request, 'reviews/write.html')
@@ -12,14 +13,22 @@ def SearchReview(request):
 
 def ReviewList(request):
     reviews = Review.objects.all()
-    kw = request.GET.get('kw', '')  # 검색어
+    # pagination
+    paginator = Paginator(reviews, 3)
+    page = request.GET.get('page', '1')  # 페이지
+    page_obj = paginator.get_page(page)
+
     # 검색
+    kw = request.GET.get('kw', '')  # 검색어
     if kw:
         reviews = reviews.filter(
             Q(title__icontains=kw) | # 제목검색
             Q(writer__username__icontains=kw) # writer색
         ).distinct()
-    return render(request, 'reviews/ReviewList.html',{'reviews':reviews, 'kw' : kw})
+
+    context = {'reviews':reviews, 'kw' : kw, 'page_obj' : page_obj}
+    # 'page_obj' : page_obj, 'page' : page
+    return render(request, 'reviews/ReviewList.html', context)
 
 def create(request):
     new_reivew = Review()
@@ -40,5 +49,5 @@ def create_comment(request, id):
         review = get_object_or_404(Review, pk=id)
         current_user = request.user
         content = request.POST.get('content')
-        comment.objects.create(content=content, writer=current_user, review=review)
+        Comment.objects.create(content=content, writer=current_user, review=review)
     return redirect('reviews:ReviewDetail', id)
