@@ -1,13 +1,13 @@
-.map_menu_wrap,
-.map_menu_wrap * {
+.map_menu_wrap {
   position: absolute;
-  top: 0;
-  left: 0;
-  margin: 60px 0 30px 140px;
+  top: 30%;
+  left: 50px;
+  margin: 3.3% 0 0 15%;
   z-index: 2;
+  width: 300px;
   height: auto;
   min-height: 100px;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .map {
@@ -15,5 +15,6 @@
 }
 
 #hospitalList {
-  overflow: hidden;
+  max-height: 270px;
+  overflow: scroll;
 }
