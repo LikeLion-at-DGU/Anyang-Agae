@@ -13,6 +13,17 @@ def SearchReview(request):
 
 def ReviewList(request):
     reviews = Review.objects.all().order_by('-pub_date')
+    # # 정렬
+    # so = request.GET.get('so','recent')
+    # if so == 'recommend': # 추천 순
+    #     reviews = Review.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-pub_date')
+    # elif so == 'click': # 클릭 순
+    #     reviews = Review.objects.annotate(num_view=Count('view_count')).order_by('-num_view', '-pub_date')
+    # elif so == 'review': # 리뷰 순
+    #     reviews = Review.objects.annotate(num_review=Count('comments')).order_by('-num_review', '-pub_date')
+    # else: # 최신 순
+    #     reviews = Review.objects.order_by('-pub_date')
+
     # 검색
     kw = request.GET.get('kw', '')  # 검색어
     if kw:
@@ -25,18 +36,6 @@ def ReviewList(request):
     paginator = Paginator(reviews, 3)
     page = request.GET.get('page', '1')  # 페이지
     page_obj = paginator.get_page(page)
-
-
-    # 정렬
-    # sort = request.GET.get('sort','recent')
-    # if sort == 'recommend': # 추천 순
-    #     reviews = Review.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-pub_date')
-    # elif sort == 'click': # 클릭 순
-    #     reviews = Review.objects.annotate(num_view=Count('view_count')).order_by('-num_view', '-pub_date')
-    # elif sort == 'review': # 리뷰 순
-    #     reviews = Review.objects.annotate(num_review=Count('comments')).order_by('-num_review', '-pub_date')
-    # else: # 최신 순
-    #     reviews = Review.objects.order_by('-pub_date')
 
     context = {'reviews':page_obj, 'kw' : kw, 'page':page}
     return render(request, 'reviews/ReviewList.html', context)
