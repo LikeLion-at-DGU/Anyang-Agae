@@ -4,8 +4,7 @@
 
 <section class="home_banner_area">
   <div class="banner_inner d-flex align-items-center">
-    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
-    </div>
+    <img class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" src="{% static 'img/image1.png' %}" alt="" style="opacity: 0.8;" />
     <div class="container">
       <div class="banner_content text-center">
         <p id="header" class="mb-3"><b>아프냥? 나도아프개!</b></p>
@@ -164,19 +163,11 @@
         <div class="packages_item">
           <div class="pack_head">
             <i class="lnr lnr-graduation-hat"></i>
-            <h3>Premium</h3>
-            <p>For the individuals</p>
-          </div>
-          <div class="pack_body">
-            <ul class="list">
-              <li><a href="#">Secure Online Transfer</a></li>
-              <li><a href="#">Unlimited Styles for interface</a></li>
-              <li><a href="#">Reliable Customer Service</a></li>
-            </ul>
+            <h3>캘린더로 확인</h3>
           </div>
           <div class="pack_footer">
-            <h4>£399.00</h4>
-            <a class="main_btn" href="#">Join Now</a>
+            <h4>calendar</h4>
+            <a class="main_btn" href="{% url 'diary:calendar' %}">캘린더</a>
           </div>
         </div>
       </div>
@@ -184,19 +175,11 @@
         <div class="packages_item">
           <div class="pack_head">
             <i class="lnr lnr-diamond"></i>
-            <h3>Exclusive</h3>
-            <p>For the individuals</p>
-          </div>
-          <div class="pack_body">
-            <ul class="list">
-              <li><a href="#">Secure Online Transfer</a></li>
-              <li><a href="#">Unlimited Styles for interface</a></li>
-              <li><a href="#">Reliable Customer Service</a></li>
-            </ul>
+            <h3>일기 작성하기</h3>
           </div>
           <div class="pack_footer">
-            <h4>£399.00</h4>
-            <a class="main_btn" href="#">Join Now</a>
+            <h4>diary</h4>
+            <a class="main_btn" href="{% url 'diary:new' %}">작성하기</a>
           </div>
         </div>
       </div>
@@ -215,32 +198,27 @@
       <div class="modal-body">
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">김성민</p>
+            <a class="card-title" href="https://github.com/KimKongDol" target="blank_">김성민🐱</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">안소은</p>
+            <a class="card-title" href="https://github.com/soeun06" target="blank_">안소은🦁</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">이소정</p>
+            <a class="card-title" href="https://github.com/SJLEE316" target="blank_">이소정🐹</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">이소현</p>
+            <a class="card-title" href="https://github.com/LeeSohyun0203" target="blank_">이소현🐶</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">이슬기</p>
-          </div>
-        </div>
-        <div class="card text-center col-sm-3 m-2" style="float: left;">
-          <div class="card-body">
-            <p class="card-title">정재경</p>
+            <a class="card-title" href="https://github.com/Lee-Developer-git" target="blank_">이슬기🐥</a>
           </div>
         </div>
       </div>
