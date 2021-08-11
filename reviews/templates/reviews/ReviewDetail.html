@@ -12,7 +12,7 @@
           <img class="author_img rounded-circle" src="{% static 'img/gallery/dog.png' %}" alt="">
           <h2>{{review.title}}</h2>
           {%if user.is_authenticated%}
-          <p>작성자: {{user.username}}</p>
+          <p>작성자: {{review.writer}}</p>
           <p>작성일자: {{review.pub_date}}</p>
           <p>위치:
             {%if review.hospital == none %}
@@ -26,11 +26,12 @@
         <aside class="single_sidebar_widget author_widget">
           <h5>{{review.content}}</h5>
           <div class="br"></div>
+          {% if user == review.writer %}
           <aside class="single-sidebar-widget newsletter_widget">
             <a class="bbtns" href="#">수정</a>
             <a class="bbtns" href="#">삭제</a>
           </aside>
-
+          {% endif %}
 
         </aside>
         {% else %}
@@ -62,13 +63,12 @@
                 <ul class="blog_meta list">
                   <li><a href="#">{{comment.writer}}<i class="lnr lnr-user"></i></a></li>
                   <li><a href="#">{{comment.created_at}}<i class="lnr lnr-calendar-full"></i></a></li>
+                  {% if user == comment.writer %}
                   <div class="default-select" id="default-select">
-                    <select>
-                      <option value="1">선택</option>
-                      <option value="1">수정</option>
-                      <option value="1">삭제</option>
-                    </select>
+                    <a href="{% url 'reviews:delete_comment' review.pk comment.pk %}">삭제</a>
+                    <a href="{% url 'reviews:update_comment' review.pk comment.pk %}">수정</a>
                   </div>
+                  {% endif %}
                 </ul>
               </div>
             </div>

@@ -63,3 +63,19 @@ def create_comment(request, id):
         content = request.POST.get('content')
         Comment.objects.create(content=content, writer=current_user, review=review)
     return redirect('reviews:ReviewDetail', id)
+
+def update_comment(request, review_id, comment_id):
+    review = get_object_or_404(Review, pk=review_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.method=="POST":
+        comment.content = request.POST['content']
+        comment.save()
+        # all_comments = review.comments.all()
+        return redirect('reviews:ReviewDetail', review.pk)
+    return render(request, 'reviews/update_comment.html', {'comment' :comment})
+
+def delete_comment(request, review_id, comment_id):
+    review = get_object_or_404(Review, pk=review_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return redirect('reviews:ReviewDetail', review.pk)

@@ -10,4 +10,7 @@ urlpatterns = [
     path('create/',create, name="create"), #게시글 작성함수
     # path('delete/',delete, name="delete"), #게시글 삭제함수
     path('<str:id>/create_comment', create_comment, name="create_comment"), #댓글 작성함수
+    path('<int:review_id>/<int:comment_id>/delete_comment', delete_comment, name="delete_comment"),
+    path('<int:review_id>/<int:comment_id>/update_comment', update_comment, name="update_comment"),
+
 ]
