@@ -12,12 +12,11 @@ let markerList = []
 let ps = new kakao.maps.services.Places()
 function searchPlaces() {
   let keyword = $('#search_hospital').val()
-  ps.keywordSearch(keyword, placesSearchCB)
+  ps.keywordSearch(keyword, placesSearchCB, { category_group_code: 'HP8' })
 }
 
 function placesSearchCB(data, status) {
   if (status === kakao.maps.services.Status.OK) {
-    console.log(data)
     displayPlaces(data)
   } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
     alert('검색 결과가 존재하지 않습니다.')
