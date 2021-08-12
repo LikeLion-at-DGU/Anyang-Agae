@@ -46,8 +46,8 @@ function displayPlaces(data) {
 
     const el = document.createElement('div')
     const itemStr = `
-        <p class="placename">병원명 : ${place_name}</p>
-        <p class="addressname">주소 : ${address_name}</p>
+        <p class="placename" style="cursor: pointer;">병원명 : ${place_name}</p>
+        <p class="addressname" style="cursor: pointer;">주소 : ${address_name}</p>
         <hr/>
       `
     el.innerHTML = itemStr
