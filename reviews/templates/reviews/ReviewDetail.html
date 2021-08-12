@@ -33,44 +33,7 @@
             <a class="bbtns" href="#">삭제</a>
           </aside>
           {% endif %}
-
         </aside>
-        <div id="comment-section">
-          <div class="form-floating">
-            <form class="d-flex justify-content-center" action="{% url 'reviews:create_comment' review.id %}"
-              method="POST">
-              {%csrf_token%}
-              <textarea class="form-control" name="content" id="comment-content" placeholder="댓글 입력"></textarea>
-              <button type="submit" id="comment-submit" value="submit" class="btn submit_btn">작성하기</button>
-            </form>
-          </div>
-          <ul id="comment-list" class="list-group list-group-flush">
-            {% for comment in comments %}
-            <article class="row blog_item">
-              <div class="col-md-3">
-                <div class="blog_info text-right">
-                  <ul class="blog_meta list">
-                    <li>{{comment.writer}}<i class="lnr lnr-user" style="margin-left: 10px;"></i></li>
-                    <li>{{comment.created_at}}<i class="lnr lnr-calendar-full" style="margin-left: 10px;"></i></li>
-                    <div class="default-select" id="default-select">
-                      <select>
-                        <option value="1">선택</option>
-                        <option value="1">수정</option>
-                        <option value="1">삭제</option>
-                      </select>
-                    </div>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-md-9">
-                <div class="blog_details">
-                  <p>{{comment.content}}</p>
-                </div>
-              </div>
-            </article>
-            {% endfor %}
-          </ul>
-        </div>
         {% else %}
         <h3>로그인하면 상세내용 열람이 가능해요!</h3>
         <aside class="single-sidebar-widget newsletter_widget">
