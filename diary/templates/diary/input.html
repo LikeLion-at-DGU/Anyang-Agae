@@ -24,10 +24,12 @@
 </div>
 
 {% else %}
-<div class="container">
-<h3>로그인 후 이용 가능합니다.</h3>
-<a class="btn btn-info" href="{% url 'account_login' %}"><span>로그인</span></a>
-<a class="btn btn-info" href="{% url 'account_signup' %}"><span>회원가입</span></a><br>
+<div class="container diary-login" style="margin-top: 5%;">
+    <p class="page-subtitle text-center" id="diary-login-title" style="font-size: 32px; color: #777777;">로그인 후 이용 가능합니다.</p>
+    <div class="text-center">
+        <a class="main_btn diary-login-btn" href="{% url 'account_login' %}"><span>로그인</span></a>
+        <a class="main_btn diary-login-btn" href="{% url 'account_signup' %}"><span>회원가입</span></a><br>
+    </div>
 </div>
 {% endif %}
 
