@@ -6,7 +6,7 @@
 
 **아프냥 나도아프개(아냥아개)**<br>
 [서비스 바로가기 링크](http://52.14.119.174/) <br>
-<img src="./anyang_agae/static/img/gallery/logo_green.png" style="width:300px">
+<img src="./anyang_agae/static/img/gallery/logo_green2.png">
 
 ### 1.2 주제 및 기획의도
 
