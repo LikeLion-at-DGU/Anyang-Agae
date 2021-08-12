@@ -19,9 +19,11 @@ from django.urls import path, include
 from anyang_agae import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),    
-    path('reviews/', include('reviews.urls', namespace='reviews')), #reviews앱의 urls.py를 포함한다.
-    path('', views.main, name="main"), #main페이지
-    path('accounts/', include('allauth.urls')), #login,logout
-    path('users/', include('users.urls')), #mypage
+    path('admin/', admin.site.urls),
+    # reviews앱의 urls.py를 포함한다.
+    path('reviews/', include('reviews.urls', namespace='reviews')),
+    path('', views.main, name="main"),  # main페이지
+    path('accounts/', include('allauth.urls')),  # login,logout
+    path('users/', include('users.urls')),  # mypage
+    path('diary/', include('diary.urls')),  # 일기
 ]
