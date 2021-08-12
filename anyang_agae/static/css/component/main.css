@@ -28,7 +28,7 @@
 }
 
 #contact-area {
-  background-image: url("../../img/component/footer-1.jpeg");
+  background-image: url('../../img/component/footer-1.jpeg');
   background-size: 100%;
   background-position-y: -300px;
   opacity: 0.9;

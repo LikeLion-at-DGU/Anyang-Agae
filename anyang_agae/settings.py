@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'diary'
 ]
 
 MIDDLEWARE = [
@@ -125,8 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [  
-  os.path.join(BASE_DIR, 'anyang_agae', 'static')  
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'anyang_agae', 'static')
 ]
 
 # Default primary key field type
@@ -134,10 +135,12 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS=[
+AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SITE_ID=1
-LOGIN_REDIRECT_URL='/'
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'

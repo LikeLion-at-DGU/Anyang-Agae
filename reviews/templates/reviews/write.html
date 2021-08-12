@@ -3,10 +3,9 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/component/write.css' %}" />
+<link rel="stylesheet" href="{% static 'css/component/mapApi.css' %}" />
 <script type="text/javascript"
-  src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vb350f48ym&submodules=geocoder"></script>
-<script type="text/javascript" src="{% static 'js/component/navermap.js'%}"></script>
-
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ae62fa65184acae545a359f6f14c8d0&libraries=services"></script>
 
 <!--================Contact Area =================-->
 <section class="contact_area p_120">
@@ -19,6 +18,14 @@
           <span style="font-size: 30px;">리뷰작성</span>
         </aside>
         {%if user.is_authenticated%}
+        <div class="map_menu_wrap text-center">
+          <form onsubmit="searchPlaces(); return false">
+            {% csrf_token %}
+            <input type="text" id="search_hospital" size=30 placeholder="찾으시는 병원"/>
+            <button type="submit" class="btn btn-default" id="hospital_submit">검색</button>
+          </form>
+          <div id="hospitalList"></div>
+        </div>
 
         <form action="{%url 'reviews:create'%}" method="post">
           {% csrf_token %}
@@ -33,16 +40,13 @@
                         <td>제목</td>
                         <td><input class="write-content" type="text" name="title"></td>
                       </tr>
-                      <!-- <tr>
+                      <tr>
                         <td>병원</td>
                         <td>
-                          <div class="search">
-                            <input type="text" id="hospital" name="hospital" size=30 />
-                            <a class="btn btn-default" id="searchsubmit">검색</a>
-                          </div>
+                          <input class="write-content" type="text" id="hospital" name="hospital" value="아래 지도에서 병원을 검색하고 [등록]을 누르면 병원명이 자동입력됩니다." readonly/>
                           <div id="map" style="width:100%;height:330px;"></div>
                         </td>
-                      </tr> -->
+                      </tr>
                       <tr>
                         <td>내용</td>
                         <td><textarea class="write-content" type="text" name="content" rows=15></textarea></td>
@@ -73,6 +77,6 @@
     </div>
   </div>
 </section>
-
+<script src="{% static 'js/component/kakaoMap.js' %}"></script>
 
 {% endblock %}

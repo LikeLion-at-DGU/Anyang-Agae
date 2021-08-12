@@ -8,10 +8,6 @@
     <div class="container">
       <div class="banner_content text-center">
         <h2>MyPage</h2>
-        <div class="page_link">
-          <a href="index.html">Home</a>
-          <a href="about-us.html">About Us</a>
-        </div>
       </div>
     </div>
   </div>
@@ -36,6 +32,7 @@
               <div class="card-body">
                 <h5>ID : {{user.username}}</h5>
                 <h5>Email : {{user.email}} </h5>
+                <h5>공개 여부 : {{user.profile.is_opened|slice:"2:4"}}</h5>
               </div>
             </div>
           </div>
@@ -71,38 +68,39 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card">
+          <div class="card">
             <div class="card-header" id="headingThree">
               <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
                 aria-expanded="false" aria-controls="collapseThree">
-                Danger
+                내가 쓴 일기
                 <i class="lnr lnr-chevron-down"></i>
                 <i class="lnr lnr-chevron-up"></i>
               </button>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                <table class="table" style="width: 100%; text-align: center;">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="width: 25%;">날짜</th>
+                      <th scope="col" style="width: 45%;">제목</th>
+                      <th scope="col">특이사항</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for event in events %}
+                    <tr>
+                      <td>{{event.start_time}}</td>
+                      <td><a href="{% url 'diary:detail' event.id %}">{{event.title}}</a></td>
+                      <td>{{event.description}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <a type="button" class="main_btn float-end" href="{% url 'diary:calendar' %}" style="width:10%; padding:2px 10px;">일기 바로가기</a>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header" id="headingfour">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsefour"
-                aria-expanded="false" aria-controls="collapsefour">
-                Warning
-                <i class="lnr lnr-chevron-down"></i>
-                <i class="lnr lnr-chevron-up"></i>
-              </button>
-            </div>
-            <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
-              <div class="card-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>

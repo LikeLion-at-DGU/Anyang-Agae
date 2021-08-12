@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="{% static 'css/component/diary.css' %}" rel="stylesheet" type="text/css" />
+<br><br><br><br><br><br><br><br>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <br>
+    <center>
+        <form method="POST">
+            <h1>내새끼 건강일지 작성</h1>
+            <hr />
+            {% csrf_token %}
+            <div class="form form-table">
+                {{ form.as_p }}
+                <hr />
+                <button type="submit" class="btn btn-info right"> Submit </button><br>
+            </div>
+        </form>
+    </center>
+</div>
+
+{% else %}
+<div class="container diary-login" style="margin-top: 5%;">
+    <p class="page-subtitle text-center" id="diary-login-title" style="font-size: 32px; color: #777777;">로그인 후 이용 가능합니다.</p>
+    <div class="text-center">
+        <a class="main_btn diary-login-btn" href="{% url 'account_login' %}"><span>로그인</span></a>
+        <a class="main_btn diary-login-btn" href="{% url 'account_signup' %}"><span>회원가입</span></a><br>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

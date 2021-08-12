@@ -4,8 +4,7 @@
 
 <section class="home_banner_area">
   <div class="banner_inner d-flex align-items-center">
-    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
-    </div>
+    <img class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" src="{% static 'img/image1.png' %}" alt="" style="opacity: 0.8;" />
     <div class="container">
       <div class="banner_content text-center">
         <p id="header" class="mb-3"><b>아프냥? 나도아프개!</b></p>
@@ -97,6 +96,7 @@
       <h2 class="fadeIn wow" data-wow-duration="2s" data-wow-delay="0.3s" style="color: #777777;">집사들의 대화 공간</h2>
     </div>
     <div class="row team_inner">
+      {% for user in profile %}
       <div class="col-lg-3 col-sm-6">
         <div class="team_item">
           <div class="team_img">
@@ -108,59 +108,11 @@
             </div>
           </div>
           <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
+            <h4>{{ user.user }}</h4>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="team_item">
-          <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-2.jpg" alt="">
-            <div class="hover">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="team_item">
-          <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-3.jpg" alt="">
-            <div class="hover">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="team_item">
-          <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-4.jpg" alt="">
-            <div class="hover">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="team_name">
-            <h4>Ethel Davis</h4>
-            <p>Managing Director (Sales)</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -210,40 +162,40 @@
       <div class="col-lg-4">
         <div class="packages_item">
           <div class="pack_head">
-            <i class="lnr lnr-graduation-hat"></i>
-            <h3>Premium</h3>
-            <p>For the individuals</p>
+            <i class="bi bi-calendar2-week"></i>
+            <h3>작성한 일기 보기</h3>
+            <p></p>
           </div>
           <div class="pack_body">
             <ul class="list">
-              <li><a href="#">Secure Online Transfer</a></li>
-              <li><a href="#">Unlimited Styles for interface</a></li>
-              <li><a href="#">Reliable Customer Service</a></li>
+              <li><a href="#">일별로 작성한 일기 보기</a></li>
+              <li><a href="#">일기 수정하기</a></li>
+              <li><a href="#">일기 삭제하기</a></li>
             </ul>
           </div>
           <div class="pack_footer">
-            <h4>£399.00</h4>
-            <a class="main_btn" href="#">Join Now</a>
+            <h4>Show</h4>
+            <a class="main_btn" href="{% url 'diary:calendar' %}">Show</a>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="packages_item">
           <div class="pack_head">
-            <i class="lnr lnr-diamond"></i>
-            <h3>Exclusive</h3>
-            <p>For the individuals</p>
+            <i class="bi bi-pencil-square"></i>
+            <h3>일기 작성하기</h3>
+            <p></p>
           </div>
           <div class="pack_body">
             <ul class="list">
-              <li><a href="#">Secure Online Transfer</a></li>
-              <li><a href="#">Unlimited Styles for interface</a></li>
-              <li><a href="#">Reliable Customer Service</a></li>
+              <li><a href="#">반려동물의 기념일 기록하기</a></li>
+              <li><a href="#">반려동물 건강 기록하기</a></li>
+              <li><a href="#">반려동물의 기분 기록하기</a></li>
             </ul>
           </div>
           <div class="pack_footer">
-            <h4>£399.00</h4>
-            <a class="main_btn" href="#">Join Now</a>
+            <h4>Write</h4>
+            <a class="main_btn" href="{% url 'diary:new' %}">Write</a>
           </div>
         </div>
       </div>
@@ -262,32 +214,27 @@
       <div class="modal-body">
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">김성민</p>
+            <a class="card-title" href="https://github.com/KimKongDol" target="blank_">김성민🐱</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">안소은</p>
+            <a class="card-title" href="https://github.com/soeun06" target="blank_">안소은🦁</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">이소정</p>
+            <a class="card-title" href="https://github.com/SJLEE316" target="blank_">이소정🐹</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">이소현</p>
+            <a class="card-title" href="https://github.com/LeeSohyun0203" target="blank_">이소현🐶</a>
           </div>
         </div>
         <div class="card text-center col-sm-3 m-2" style="float: left;">
           <div class="card-body">
-            <p class="card-title">이슬기</p>
-          </div>
-        </div>
-        <div class="card text-center col-sm-3 m-2" style="float: left;">
-          <div class="card-body">
-            <p class="card-title">정재경</p>
+            <a class="card-title" href="https://github.com/Lee-Developer-git" target="blank_">이슬기🐥</a>
           </div>
         </div>
       </div>
@@ -307,6 +254,9 @@
     </div>
   </div>
 </section>
-
+<script src="../static/js/wow.min.js"></script>
+<script>
+  new WOW().init();
+</script>
 
 {% endblock %}
