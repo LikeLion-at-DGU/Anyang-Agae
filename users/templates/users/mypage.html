@@ -4,7 +4,7 @@
 
 <section class="banner_area">
   <div class="banner_inner d-flex align-items-center">
-    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+    <img src="{% static 'img/gallery/banner.png' %}" alt="">
     <div class="container">
       <div class="banner_content text-center">
         <h2>MyPage</h2>
@@ -97,7 +97,8 @@
                     {% endfor %}
                   </tbody>
                 </table>
-                <a type="button" class="main_btn float-end" href="{% url 'diary:calendar' %}" style="width:10%; padding:2px 10px;">일기 바로가기</a>
+                <a type="button" class="main_btn float-end" href="{% url 'diary:calendar' %}"
+                  style="width:10%; padding:2px 10px;">일기 바로가기</a>
               </div>
             </div>
           </div>
@@ -106,4 +107,6 @@
     </div>
   </div>
 </section>
+<link rel="stylesheet" href="{% static 'css/component/mypage.css' %}" />
+
 {% endblock %}
