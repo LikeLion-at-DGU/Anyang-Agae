@@ -25,7 +25,7 @@
   <div class="container">
     <div class="finance_inner row">
       <div class="col-lg-3 col-sm-6">
-        <a class="finance_item" href="#hospital_area">
+        <a class="finance_item" id="hospital_btn" href="#hospital_area">
           <div class="media">
             <div class="d-flex">
               <i class="bi bi-moon"></i>
@@ -37,7 +37,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <a class="finance_item" href="#community_area">
+        <span class="finance_item" id="community_btn" >
           <div class="media">
             <div class="d-flex">
               <i class="bi bi-chat-dots"></i>
@@ -46,10 +46,10 @@
               <p class="icon-description">집사들의 커뮤니티</p>
             </div>
           </div>
-        </a>
+        </span>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <a class="finance_item" href="#review_area">
+        <span class="finance_item" id="review_btn">
           <div class="media">
             <div class="d-flex">
               <i class="bi bi-clipboard-plus"></i>
@@ -58,10 +58,10 @@
               <p class="icon-description">진찰 기록과 리뷰</p>
             </div>
           </div>
-        </a>
+        </span>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <a class="finance_item" href="#diary_area">
+        <span class="finance_item" id="diary_btn">
           <div class="media">
             <div class="d-flex">
               <i class="bi bi-calendar-check"></i>
@@ -70,7 +70,7 @@
               <p class="icon-description">내새끼 건강 일기</p>
             </div>
           </div>
-        </a>
+        </span>
       </div>
     </div>
   </div>
@@ -128,7 +128,7 @@
       {% for review in reviews%}
       <div class="item">
         <div class="testi_item">
-          <h4 class="mb-2">[{{review.hospital}}] {{review.title}}</h4>
+          <h4 class="mb-2"><a href="{% url 'reviews:ReviewDetail' review.id %}" style="color: #777777;">[{{review.hospital}}] {{review.title}}</a></h4>
           <ul class="list">
             <li><a href="#"><i class="fa fa-star"></i></a></li>
             <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -253,6 +253,8 @@
     </div>
   </div>
 </section>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="../static/js/component/main.js"></script>
 <script src="../static/js/wow.min.js"></script>
 <script>
   new WOW().init();
