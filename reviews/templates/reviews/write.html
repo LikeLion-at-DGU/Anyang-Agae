@@ -109,30 +109,30 @@ function placesSearchCB(data, status) {
 }
 
 function displayPlaces(data) {
-  var hospitalList = document.querySelector('#hospitalList')
-  var bounds = new kakao.maps.LatLngBounds() // 마커할 때 사용하는 함수
+  var hospitalList = document.querySelector('#hospitalList');
+  var bounds = new kakao.maps.LatLngBounds(); // 마커할 때 사용하는 함수
   for (let i = 0; i < data.length; i++) {
-    let lat = data[i].y //위도
-    let lng = data[i].x //경도
-    let address_name = data[i]['address_name']
-    let place_name = data[i]['place_name']
+    let lat = data[i].y; //위도
+    let lng = data[i].x; //경도
+    let address_name = data[i]['address_name'];
+    let place_name = data[i]['place_name'];
 
-    const placePosition = new kakao.maps.LatLng(lat, lng)
+    const placePosition = new kakao.maps.LatLng(lat, lng);
     bounds.extend(placePosition) // bounds에 추가
     let marker = new kakao.maps.Marker({
       position: placePosition,
-    }) // 마커에 추가
+    }); // 마커에 추가
 
-    marker.setMap(map)
-    markerList.push(marker)
+    marker.setMap(map);
+    markerList.push(marker);
 
     const el = document.createElement('div')
     const itemStr = `
         <p class="placename" style="cursor: pointer;">병원명 : ${place_name}</p>
         <p class="addressname" style="cursor: pointer;">주소 : ${address_name}</p>
         <hr/>
-      `
-    el.innerHTML = itemStr
+      `;
+    el.innerHTML = itemStr;
 
     let infowindow = new kakao.maps.InfoWindow({
       zIndex: 1,
@@ -140,22 +140,22 @@ function displayPlaces(data) {
 
     //  인포 윈도우 클릭 이벤트 //
     kakao.maps.event.addListener(marker, 'click', function () {
-      displayInfoWindows(marker, place_name, address_name, lat, lng)
-    })
+      displayInfoWindows(marker, place_name, address_name, lat, lng);
+    });
     kakao.maps.event.addListener(marker, 'click', function () {
-      infowindow.close()
-    })
+      infowindow.close();
+    });
     el.onclick = function () {
       displayInfoWindows(marker, place_name, address_name, lat, lng)
-    }
+    };
 
-    hospitalList.appendChild(el)
+    hospitalList.appendChild(el);
   }
-  map.setBounds(bounds)
+  map.setBounds(bounds);
 }
 
 function displayInfoWindows(marker, place_name, address_name, lat, lng) {
-  const placePosition = new kakao.maps.LatLng(lat, lng)
+  const placePosition = new kakao.maps.LatLng(lat, lng);
   var content = `
       <div style="padding: 30px;">
         병원명 : ${place_name} <br/>
@@ -170,13 +170,12 @@ function displayInfoWindows(marker, place_name, address_name, lat, lng) {
     content: content,
     removable: true,
   })
-  map.panTo(marker.getPosition()) // 해당 위치 불러옴
-  // infowindow.setContent(content);
-  infowindow.open(map, marker)
+  map.panTo(marker.getPosition()); // 해당 위치 불러옴
+  infowindow.open(map, marker);
 }
 
 function onClickValue(place_name) {
-  document.querySelector('#hospital').value = place_name
+  document.querySelector('#hospital').value = place_name;
 }
 
 </script>

@@ -38,10 +38,29 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">홈</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'reviews:SearchReview' %}">리뷰 검색하기</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'reviews:ReviewList' %}">리뷰 보기</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'reviews:create' %}">리뷰 쓰기</a></li>
+            <li class="nav-item submenu dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">REVIEW</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="{% url 'reviews:SearchReview' %}">리뷰 검색하기</a>
+                <li class="nav-item"><a class="nav-link" href="{% url 'reviews:ReviewList' %}">리뷰 보기</a></li>
+                {%if user.is_authenticated%}
+                <li class="nav-item"><a class="nav-link" href="{% url 'reviews:write' %}">리뷰 작성하기</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item submenu dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">DIARY</a>
+              <ul class="dropdown-menu">
+                {%if user.is_authenticated%}
+                <li class="nav-item"><a class="nav-link" href="{% url 'diary:calendar' %}">일지 보기</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'diary:new' %}">일지 기록하기</a></li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">로그인 후 이용 가능</a></li>
+                {% endif %}
+              </ul>
+            </li>
             {%if user.is_authenticated%}
             <li class="nav-item"><a class="nav-link" href="{% url 'users:mypage' %}">마이페이지</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">로그아웃</a></li>
@@ -49,30 +68,6 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">로그인</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">회원가입</a></li>
             {% endif %}
-            <!-- <li class="nav-item submenu dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">Courses</a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a>
-                <li class="nav-item"><a class="nav-link" href="course-details.html">Course Details</a></li>
-              </ul>
-            </li>
-            <li class="nav-item submenu dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">Pages</a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-              </ul>
-            </li>
-            <li class="nav-item submenu dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">Blog</a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
           </ul>
         </div>
       </div>
