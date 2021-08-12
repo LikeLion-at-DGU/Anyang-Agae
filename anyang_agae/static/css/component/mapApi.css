@@ -18,3 +18,15 @@
   max-height: 270px;
   overflow: scroll;
 }
+
+.map_menu_wrap-update {
+  position: absolute;
+  top: 16%;
+  left: 50px;
+  margin: 3.3% 0 0 15%;
+  z-index: 2;
+  width: 300px;
+  height: auto;
+  min-height: 100px;
+  background: rgba(255, 255, 255, 0.7);
+}

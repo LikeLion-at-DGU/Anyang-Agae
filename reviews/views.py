@@ -3,7 +3,7 @@ from .models import Review, Comment
 from django.db.models import Q, Count
 from django.utils import timezone
 from django.core.paginator import Paginator
-
+from django.contrib.auth.decorators import login_required
 
 def write(request):
     return render(request, 'reviews/write.html')
@@ -16,12 +16,24 @@ def SearchReview(request):
 
 def ReviewList(request):
     reviews = Review.objects.all().order_by('-pub_date')
+    # # 정렬
+    # so = request.GET.get('so','recent')
+    # if so == 'recommend': # 추천 순
+    #     reviews = Review.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-pub_date')
+    # elif so == 'click': # 클릭 순
+    #     reviews = Review.objects.annotate(num_view=Count('view_count')).order_by('-num_view', '-pub_date')
+    # elif so == 'review': # 리뷰 순
+    #     reviews = Review.objects.annotate(num_review=Count('comments')).order_by('-num_review', '-pub_date')
+    # else: # 최신 순
+    #     reviews = Review.objects.order_by('-pub_date')
+
     # 검색
     kw = request.GET.get('kw', '')  # 검색어
     if kw:
         reviews = reviews.filter(  # reviews로 받고 아래에서 page당 3개씩 받는 원리
             Q(title__icontains=kw) |  # 제목검색
-            Q(writer__username__icontains=kw)  # writer검색
+            Q(writer__username__icontains=kw) |# writer검색
+            Q(hospital__icontains=kw)  # 병원검색
         ).distinct()
 
     # pagination
@@ -29,18 +41,7 @@ def ReviewList(request):
     page = request.GET.get('page', '1')  # 페이지
     page_obj = paginator.get_page(page)
 
-    # 정렬
-    # sort = request.GET.get('sort','recent')
-    # if sort == 'recommend': # 추천 순
-    #     reviews = Review.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-pub_date')
-    # elif sort == 'click': # 클릭 순
-    #     reviews = Review.objects.annotate(num_view=Count('view_count')).order_by('-num_view', '-pub_date')
-    # elif sort == 'review': # 리뷰 순
-    #     reviews = Review.objects.annotate(num_review=Count('comments')).order_by('-num_review', '-pub_date')
-    # else: # 최신 순
-    #     reviews = Review.objects.order_by('-pub_date')
-
-    context = {'reviews': page_obj, 'kw': kw, 'page': page}
+    context = {'reviews':page_obj, 'kw' : kw, 'page':page}
     return render(request, 'reviews/ReviewList.html', context)
 
 
@@ -62,12 +63,44 @@ def ReviewDetail(request, id):
     all_comments = review.comments.all().order_by('-created_at')
     return render(request, 'reviews/ReviewDetail.html', {'review': review, 'comments': all_comments})
 
+@login_required
+def update(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    if review.writer == request.user:
+        if request.method == "POST":
+            review.title = request.POST['title']
+            review.content = request.POST['content']
+            review.hospital = request.POST['hospital']
+            review.save()
+            return redirect('reviews:ReviewDetail', review.pk)
+    return render(request, 'reviews/review_update.html', {'review':review})
+
+@login_required
+def delete(request, review_id):
+    post = get_object_or_404(Review, pk=review_id)
+    post.delete()
+    return redirect("reviews:ReviewList")
 
 def create_comment(request, id):
     if request.method == "POST":
         review = get_object_or_404(Review, pk=id)
         current_user = request.user
         content = request.POST.get('content')
-        Comment.objects.create(
-            content=content, writer=current_user, review=review)
+        Comment.objects.create(content=content, writer=current_user, review=review)
     return redirect('reviews:ReviewDetail', id)
+
+def update_comment(request, review_id, comment_id):
+    review = get_object_or_404(Review, pk=review_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.method=="POST":
+        comment.content = request.POST['content']
+        comment.save()
+        # all_comments = review.comments.all()
+        return redirect('reviews:ReviewDetail', review.pk)
+    return render(request, 'reviews/update_comment.html', {'comment' :comment})
+
+def delete_comment(request, review_id, comment_id):
+    review = get_object_or_404(Review, pk=review_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return redirect('reviews:ReviewDetail', review.pk)

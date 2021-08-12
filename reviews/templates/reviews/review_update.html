@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/component/write.css' %}" />
+<link rel="stylesheet" href="{% static 'css/component/mapApi.css' %}" />
+<script type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ae62fa65184acae545a359f6f14c8d0&libraries=services"></script>
+
+<!--================Contact Area =================-->
+<section class="contact_area p_120">
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="blog_right_sidebar">
+        <aside class="single_sidebar_widget author_widget">
+          <img class="author_img rounded-circle" src="{% static 'img/gallery/dog.png' %}" alt="">
+          <span style="font-size: 30px;">리뷰수정</span>
+        </aside>
+        <div class="map_menu_wrap-update text-center">
+          <form onsubmit="searchPlaces(); return false">
+            {% csrf_token %}
+            <input type="text" id="search_hospital" size=30 placeholder="찾으시는 병원" />
+            <button type="submit" class="btn btn-default" id="hospital_submit">검색</button>
+          </form>
+          <div id="hospitalList"></div>
+        </div>
+
+        <form action="{%url 'reviews:update' review.id%}" method="post">
+          {% csrf_token %}
+          <aside class="single_sidebar_widget author_widget">
+            <div class="row">
+              <div class="col-lg-12">
+                <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
+                  novalidate="novalidate">
+                  <div class="col-md-12">
+                    <table>
+                      <tr>
+                        <td>제목</td>
+                        <td><input class="write-content" type="text" name="title" value="{{ review.title }}"></td>
+                      </tr>
+                      <tr>
+                        <td>병원</td>
+                        <td>
+                          <input class="write-content" type="text" id="hospital" name="hospital"
+                            value="{{ review.hospital }}" readonly />
+                          <div id="map"></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>내용</td>
+                        <td><textarea class="write-content" type="text" name="content"
+                            rows=15>{{review.content}}</textarea></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-12 text-right">
+                    <button type="submit" value="submit" class="btn submit_btn">작성완료</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="br"></div>
+          </aside>
+        </form>
+      </div>
+      <img class="img-title" src="{% static 'img/gallery/animalB.png' %}" />
+    </div>
+  </div>
+</section>
+<script src="{% static 'js/component/kakaoMap.js' %}"></script>
+
+{% endblock %}

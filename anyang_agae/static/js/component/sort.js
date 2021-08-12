@@ -12,12 +12,3 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
   }
 };
-
-$(document).ready(function () {
-  var sort = getUrlParameter("sort");
-  if (sort == "recent") {
-    $(".sort-new").prop("selected", "selected");
-  } else if (sort == "click") {
-    $(".sort-click").prop("selected", "selected");
-  }
-});

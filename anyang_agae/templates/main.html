@@ -4,7 +4,8 @@
 
 <section class="home_banner_area">
   <div class="banner_inner d-flex align-items-center">
-    <img class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" src="{% static 'img/image1.png' %}" alt="" style="opacity: 0.8;" />
+    <img class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+      src="{% static 'img/gallery/image1.png' %}" alt="" style="opacity: 0.8;" />
     <div class="container">
       <div class="banner_content text-center">
         <p id="header" class="mb-3"><b>아프냥? 나도아프개!</b></p>
@@ -100,7 +101,6 @@
       <div class="col-lg-3 col-sm-6">
         <div class="team_item">
           <div class="team_img">
-            <img class="rounded-circle" src="img/team/team-1.jpg" alt="">
             <div class="hover">
               <a href="#"><i class="fa fa-facebook"></i></a>
               <a href="#"><i class="fa fa-twitter"></i></a>
@@ -128,7 +128,6 @@
       {% for review in reviews%}
       <div class="item">
         <div class="testi_item">
-          <img src="img/testimonials/testi-3.png" alt="">
           <h4 class="mb-2">[{{review.hospital}}] {{review.title}}</h4>
           <ul class="list">
             <li><a href="#"><i class="fa fa-star"></i></a></li>
