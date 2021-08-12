@@ -29,8 +29,8 @@
           <div class="br"></div>
           {% if user == review.writer %}
           <aside class="single-sidebar-widget newsletter_widget">
-            <a class="bbtns" href="#">수정</a>
-            <a class="bbtns" href="#">삭제</a>
+            <a class="bbtns" href="{% url 'reviews:update' review.id %}">수정</a>
+            <a class="bbtns" href="{% url 'reviews:delete' review.id %}">삭제</a>
           </aside>
           {% endif %}
         </aside>

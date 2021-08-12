@@ -3,7 +3,7 @@ from .models import Review, Comment
 from django.db.models import Q, Count
 from django.utils import timezone
 from django.core.paginator import Paginator
-
+from django.contrib.auth.decorators import login_required
 
 def write(request):
     return render(request, 'reviews/write.html')
@@ -32,7 +32,8 @@ def ReviewList(request):
     if kw:
         reviews = reviews.filter(  # reviews로 받고 아래에서 page당 3개씩 받는 원리
             Q(title__icontains=kw) |  # 제목검색
-            Q(writer__username__icontains=kw)  # writer검색
+            Q(writer__username__icontains=kw) |# writer검색
+            Q(hospital__icontains=kw)  # 병원검색
         ).distinct()
 
     # pagination
@@ -62,6 +63,23 @@ def ReviewDetail(request, id):
     all_comments = review.comments.all().order_by('-created_at')
     return render(request, 'reviews/ReviewDetail.html', {'review': review, 'comments': all_comments})
 
+@login_required
+def update(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    if review.writer == request.user:
+        if request.method == "POST":
+            review.title = request.POST['title']
+            review.content = request.POST['content']
+            review.hospital = request.POST['hospital']
+            review.save()
+            return redirect('reviews:ReviewDetail', review.pk)
+    return render(request, 'reviews/review_update.html', {'review':review})
+
+@login_required
+def delete(request, review_id):
+    post = get_object_or_404(Review, pk=review_id)
+    post.delete()
+    return redirect("reviews:ReviewList")
 
 def create_comment(request, id):
     if request.method == "POST":
